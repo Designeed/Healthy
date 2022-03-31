@@ -7,7 +7,10 @@
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/splash_screen.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/splash_screen_logo.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_dashboard.xml" value="0.36367753623188404" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_home.xml" value="0.36367753623188404" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_notifications.xml" value="0.36367753623188404" />
