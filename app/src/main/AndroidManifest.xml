@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Healthy">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="false"
             android:label="@string/app_name"/>
         <activity
-            android:name=".SplashScreen"
+            android:name=".view.SplashScreen"
             android:exported="true"
             android:theme="@style/SplashScreen">
             <intent-filter>

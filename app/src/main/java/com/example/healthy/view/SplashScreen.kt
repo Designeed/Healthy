@@ -1,4 +1,4 @@
-package com.example.healthy
+package com.example.healthy.view
 
 import android.content.Intent
 import android.os.Bundle
