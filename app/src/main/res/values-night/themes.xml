@@ -27,4 +27,9 @@
         <item name="android:textColorPrimary">@color/teal_200</item>
     </style>
 
+    <style name="BottomNavigation" parent="ThemeOverlay.Material3.NavigationView">
+        <item name="android:background">@color/DarkToxicGreen</item>
+        <item name="itemIconTint">@color/white</item>
+    </style>
+
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ic_journal"
+        android:icon="@drawable/ic_daily"
+        android:iconTint="@color/white"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/ic_food"
+        android:icon="@drawable/ic_food"
+        android:iconTint="@color/white"
+        tools:ignore="MenuTitle"/>
+</menu>

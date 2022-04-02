@@ -21,8 +21,10 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
-    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-
+    <style name="BottomNavigation" parent="ThemeOverlay.Material3.NavigationView">
+        <item name="android:background">@color/ToxicGreen</item>
+        <item name="background">@color/ToxicGreen</item>
+        <item name="itemIconTint">@color/white</item>
     </style>
 </resources>
 
