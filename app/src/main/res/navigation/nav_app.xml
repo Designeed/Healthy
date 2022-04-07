@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/fragment_food"
-        android:name="com.example.healthy.view.fragments.FoodFragment"
+        android:name="com.example.healthy.presentation.food.FoodFragment"
         android:label="fragment_food"
         tools:layout="@layout/fragment_food" />
 
     <fragment
         android:id="@+id/fragment_journal"
-        android:name="com.example.healthy.view.fragments.JournalFragment"
+        android:name="com.example.healthy.presentation.journal.JournalFragment"
         android:label="fragment_journal"
         tools:layout="@layout/fragment_journal" />
 

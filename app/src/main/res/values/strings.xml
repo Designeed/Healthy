@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Healthy</string>
+    <string name="actionBar_journal">Дневник</string>
+    <string name="actionBar_food">Список блюд</string>
 </resources>
