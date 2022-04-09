@@ -6,15 +6,15 @@
     app:startDestination="@id/fragment_journal">
 
     <fragment
-        android:id="@+id/fragment_food"
-        android:name="com.example.healthy.presentation.food.FoodFragment"
-        android:label="fragment_food"
-        tools:layout="@layout/fragment_food" />
-
-    <fragment
         android:id="@+id/fragment_journal"
         android:name="com.example.healthy.presentation.journal.JournalFragment"
-        android:label="fragment_journal"
+        android:label="@string/actionBar_journal"
         tools:layout="@layout/fragment_journal" />
+
+    <fragment
+        android:id="@+id/fragment_food"
+        android:name="com.example.healthy.presentation.food.FoodFragment"
+        android:label="@string/actionBar_food"
+        tools:layout="@layout/fragment_food" />
 
 </navigation>
