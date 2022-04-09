@@ -1,32 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
-    <fragment
-        android:id="@+id/containerView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_app"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+        <fragment
+            android:id="@+id/containerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_gravity="top"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_app"/>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/menu"
-        style="@style/BottomNavigation"/>
+        android:layout_gravity="bottom"
+        app:fabCradleRoundedCornerRadius="15dp"
+        app:fabCradleMargin="6dp"
+        style="@style/AppBarColor">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:itemIconSize="30dp"
+            app:elevation="0dp"
+            android:background="@android:color/transparent"
+            app:itemIconTint="@color/white"
+            app:labelVisibilityMode="selected"
+            app:menu="@menu/menu"/>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_note"
+        app:layout_anchor="@id/bottomAppBar"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

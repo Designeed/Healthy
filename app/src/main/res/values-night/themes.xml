@@ -1,21 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Healthy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/DarkToxicGreen</item>
         <item name="colorPrimaryVariant">@color/teal_200</item>
         <item name="colorOnPrimary">@color/teal_200</item>
+        <item name="android:windowBackground">@color/DarkMainBackground</item>
+
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/DarkToxicGreen</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/white</item>
 
         <!-- Status and navigation bar color -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <item name="android:navigationBarColor">@color/DarkToxicGreen</item>
 
         <item name="actionBarStyle">@style/ActionBarStyle</item>
-        <item name="android:windowBackground">@color/DarkMainBackground</item>
     </style>
 
     <style name="SplashScreen" parent="Theme.AppCompat.DayNight.NoActionBar">
@@ -24,12 +26,9 @@
 
     <style name="ActionBarStyle" parent="Widget.AppCompat.ActionBar.Solid">
         <item name="android:background">@color/DarkToxicGreen</item>
-        <item name="android:textColorPrimary">@color/teal_200</item>
     </style>
 
-    <style name="BottomNavigation" parent="ThemeOverlay.Material3.NavigationView">
-        <item name="android:background">@color/DarkToxicGreen</item>
-        <item name="itemIconTint">@color/white</item>
+    <style name="AppBarColor">
+        <item name="backgroundTint">@color/DarkToxicGreen</item>
     </style>
-
 </resources>

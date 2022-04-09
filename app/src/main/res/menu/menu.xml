@@ -8,6 +8,10 @@
         tools:ignore="MenuTitle"/>
 
     <item
+        android:id="@+id/placeholder"
+        tools:ignore="MenuTitle"/>
+
+    <item
         android:id="@+id/fragment_food"
         android:icon="@drawable/ic_food"
         android:iconTint="@color/white"
