@@ -7,14 +7,38 @@
 
     <fragment
         android:id="@+id/fragment_journal"
-        android:name="com.example.healthy.presentation.journal.JournalFragment"
+        android:name="com.example.healthy.presentation.fragments.journal.JournalFragment"
         android:label="@string/actionBar_journal"
-        tools:layout="@layout/fragment_journal" />
+        tools:layout="@layout/fragment_journal" >
+        <action
+            android:id="@+id/action_fragment_journal_to_fragment_add_journal"
+            app:destination="@id/fragment_add_journal" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_add_journal"
+        android:name="com.example.healthy.presentation.fragments.journal.AddJournalFragment"
+        android:label="@string/actionBar_addJournal"
+        tools:layout="@layout/fragment_add_journal"/>
 
     <fragment
         android:id="@+id/fragment_food"
-        android:name="com.example.healthy.presentation.food.FoodFragment"
+        android:name="com.example.healthy.presentation.fragments.food.FoodFragment"
         android:label="@string/actionBar_food"
-        tools:layout="@layout/fragment_food" />
+        tools:layout="@layout/fragment_food" >
+        <action
+            android:id="@+id/action_fragment_food_to_fragment_add_food"
+            app:destination="@id/fragment_add_food" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/fragment_add_food"
+        android:name="com.example.healthy.presentation.fragments.food.AddFoodFragment"
+        android:label="@string/actionBar_addFood"
+        tools:layout="@layout/fragment_add_food"/>
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.example.healthy.presentation.fragments.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

@@ -2,4 +2,7 @@
     <string name="app_name">Healthy</string>
     <string name="actionBar_journal">Дневник</string>
     <string name="actionBar_food">Список блюд</string>
+    <string name="actionBar_addFood">Добавление блюда</string>
+    <string name="actionBar_addJournal">Добавление записи</string>
+    <string name="settings">Настройки</string>
 </resources>

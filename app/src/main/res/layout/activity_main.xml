@@ -14,43 +14,55 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <fragment
-            android:id="@+id/containerView"
+            android:id="@+id/fragmentContainer"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_gravity="top"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_app"/>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/bottomNavigationContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:fabCradleRoundedCornerRadius="15dp"
-        app:fabCradleMargin="6dp"
-        style="@style/AppBarColor">
+        android:animateLayoutChanges="true"
+        android:layout_gravity="bottom">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            style="@style/AppBarColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            app:itemIconSize="30dp"
+            android:layout_gravity="bottom"
             app:elevation="0dp"
-            android:background="@android:color/transparent"
-            app:itemIconTint="@color/white"
-            app:labelVisibilityMode="selected"
-            app:menu="@menu/menu"/>
-    </com.google.android.material.bottomappbar.BottomAppBar>
+            app:fabCradleMargin="6dp"
+            app:fabCradleRoundedCornerRadius="20dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_note"
-        app:layout_anchor="@id/bottomAppBar"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@android:color/transparent"
+                app:elevation="0dp"
+                app:itemIconSize="30dp"
+                app:itemIconTint="@color/white"
+                app:labelVisibilityMode="selected"
+                app:menu="@menu/menu" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            app:elevation="0dp"
+            android:src="@drawable/ic_add_note"
+            app:layout_anchor="@id/bottomAppBar"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
