@@ -6,8 +6,7 @@
         <item name="colorPrimary">@color/ToxicGreen</item>
         <item name="colorPrimaryVariant">@color/teal_200</item>
         <item name="colorOnPrimary">@color/teal_200</item>
-        <item name="android:windowBackground">@color/MainBackGround</item>
-
+        <item name="android:windowBackground">@drawable/ic_bg_light</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/ToxicGreen</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -23,6 +22,30 @@
 
     <style name="AppBarColor">
         <item name="backgroundTint">@color/ToxicGreen</item>
+    </style>
+
+    <style name="ItemBackground">
+        <item name="android:background">@drawable/rounded_template</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/TextColor</item>
+    </style>
+
+    <style name="CardBackground">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12sp</item>
+        <item name="android:layout_marginBottom">30sp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:inputType">number|textNoSuggestions</item>
+        <item name="android:background">@drawable/rounded_template</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/TextColor</item>
+    </style>
+
+    <style name="TextColor">
+        <item name="android:textColor">@color/TextColor</item>
     </style>
 </resources>
 

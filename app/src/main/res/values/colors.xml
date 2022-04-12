@@ -3,15 +3,17 @@
     <!--Light Color-->
     <color name="MainBackGround">#DBFFD2</color>
     <color name="ToxicGreen">#41CC6A</color>
-
+    <color name="TextColor">#298043</color>
     <!--Dark Color-->
     <color name="DarkMainBackground">#4A634F</color>
     <color name="DarkToxicGreen">#49895C</color>
+    <color name="ItemBackgroundColor">#7EAA77</color>
 
     <!--Shared Color-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="OnceGreen">#5E735A</color>
+    <color name="Green">#41CC6A</color>
 
 
     <color name="purple_200">#FFBB86FC</color>

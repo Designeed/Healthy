@@ -5,4 +5,10 @@
     <string name="actionBar_addFood">Добавление блюда</string>
     <string name="actionBar_addJournal">Добавление записи</string>
     <string name="settings">Настройки</string>
+    <string name="food_name">Введите название блюда</string>
+    <string name="content_food">Введите содержание КБЖУ на 100г блюда</string>
+    <string name="protein">Белки</string>
+    <string name="fats">Жиры</string>
+    <string name="сarbs">Углеводы</string>
+    <string name="calories">Каллории</string>
 </resources>
