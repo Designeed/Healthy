@@ -6,19 +6,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="12dp"
-    android:layout_marginEnd="16dp"
+    android:paddingTop="12dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:clipToPadding="false"
+    android:outlineProvider="bounds"
     tools:context=".presentation.fragments.food.AddFoodFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:fontFamily="@font/nunito_bold"
+
         android:textSize="@dimen/default_text_size"
         android:text="@string/food_name"
-        style="@style/TextColor"/>
+        style="@style/TextStyle"/>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/txtBox_foodName"
@@ -30,7 +32,7 @@
         android:fontFamily="@font/nunito_bold"
         android:importantForAutofill="no"
         android:inputType="text|textNoSuggestions"
-        android:minHeight="48dp"
+        android:minHeight="48sp"
         android:textSize="@dimen/large_text_size"
         tools:ignore="SpeakableTextPresentCheck"/>
 
@@ -38,18 +40,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:fontFamily="@font/nunito_bold"
+
         android:textSize="@dimen/default_text_size"
         android:text="@string/content_food"
-        style="@style/TextColor"/>
+        style="@style/TextStyle"/>
 
     <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         app:flexWrap="wrap"
-        app:justifyContent="space_between"
-        >
+        app:justifyContent="space_between">
 
         <FrameLayout
             android:layout_width="140sp"
@@ -97,6 +98,7 @@
                 android:textSize="@dimen/small_text_size"
                 tools:ignore="TextContrastCheck" />
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="140sp"
             android:layout_height="wrap_content">

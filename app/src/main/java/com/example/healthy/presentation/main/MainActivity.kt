@@ -2,7 +2,9 @@ package com.example.healthy.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.example.healthy.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,14 +48,14 @@ class MainActivity : AppCompatActivity(){
     override fun onSupportNavigateUp(): Boolean {
         navController.navigateUp()
         if (bottomNavigationContainer.alpha == 0.0f)
-            bottomNavigationContainer.animate().alpha(1.0f).duration = 250
+            bottomNavigationContainer.animate().alpha(1.0f).duration = 150
 
         return super.onSupportNavigateUp()
     }
 
     override fun onBackPressed() {
         if (bottomNavigationContainer.alpha == 0.0f)
-            bottomNavigationContainer.animate().alpha(1.0f).duration = 250
+            bottomNavigationContainer.animate().alpha(1.0f).duration = 150
         super.onBackPressed()
     }
 
@@ -81,6 +83,12 @@ class MainActivity : AppCompatActivity(){
                         popExit = R.anim.nav_default_pop_exit_anim
                     }
                 })
+
+        else if (navController.currentDestination?.id == R.id.fragment_add_food){
+        }
+
+        else if (navController.currentDestination?.id == R.id.fragment_add_journal){
+        }
     }
 
     fun btnOpenSettings(item: MenuItem) {
@@ -95,6 +103,6 @@ class MainActivity : AppCompatActivity(){
                     popExit = R.anim.nav_default_pop_exit_anim
                 }
             })
-        bottomNavigationContainer.animate().alpha(0.0f).duration = 250
+        bottomNavigationContainer.animate().alpha(0.0f).duration = 150
     }
 }

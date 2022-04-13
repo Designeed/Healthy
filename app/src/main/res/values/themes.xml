@@ -31,7 +31,7 @@
     </style>
 
     <style name="CardBackground">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">140sp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">12sp</item>
         <item name="android:layout_marginBottom">30sp</item>
@@ -44,8 +44,9 @@
         <item name="android:textColor">@color/TextColor</item>
     </style>
 
-    <style name="TextColor">
+    <style name="TextStyle">
         <item name="android:textColor">@color/TextColor</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
     </style>
 </resources>
 

@@ -11,4 +11,7 @@
     <string name="fats">Жиры</string>
     <string name="сarbs">Углеводы</string>
     <string name="calories">Каллории</string>
+    <string name="Y">У</string>
+    <string name="J">Ж</string>
+    <string name="B">Б</string>
 </resources>
