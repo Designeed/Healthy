@@ -43,10 +43,10 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             style="@style/AppBarColor"
+            android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-
             app:fabCradleMargin="6dp"
             app:fabCradleRoundedCornerRadius="20dp">
 
@@ -61,6 +61,7 @@
                 app:itemIconSize="30dp"
                 app:itemIconTint="@color/white"
                 app:labelVisibilityMode="selected"
+                android:layout_gravity="center_vertical"
                 app:menu="@menu/menu" />
         </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -70,7 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:src="@drawable/ic_add_note"
-
             app:layout_anchor="@id/bottomAppBar"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

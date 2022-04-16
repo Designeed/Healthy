@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/background_callories.xml" value="0.38645833333333335" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/background_calories.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/bg_protein.xml" value="0.38645833333333335" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/bg_protein_fats_carbs.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/bg_transparent.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/dark_splash_screen.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_add_arrow.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_add_food.xml" value="0.38645833333333335" />
@@ -31,6 +34,8 @@
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/font/nunito_bolt.xml" value="0.4005208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/add_food_item.xml" value="0.2504528985507246" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/food_item.xml" value="0.5" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_food.xml" value="0.5" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_journal.xml" value="0.2078125" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_journal_note.xml" value="0.26268115942028986" />

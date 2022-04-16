@@ -7,7 +7,7 @@
     <!--Dark Color-->
     <color name="DarkMainBackground">#4A634F</color>
     <color name="DarkToxicGreen">#49895C</color>
-    <color name="ItemBackgroundColor">#7EAA77</color>
+    <color name="ItemBackgroundColor">#699C78</color>
 
     <!--Shared Color-->
     <color name="black">#FF000000</color>
