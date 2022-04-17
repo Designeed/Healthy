@@ -1,7 +1,7 @@
 package com.example.healthy.domain.model
 
-class Food (val Title: String,
-            val Protein: Int,
-            val Fats: Int,
-            val Carbs: Int,
-            val Calories: Int )
+data class Food (val title: String,
+            val protein: Int,
+            val fats: Int,
+            val carbs: Int,
+            val calories: Int )

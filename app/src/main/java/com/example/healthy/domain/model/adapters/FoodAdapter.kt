@@ -23,11 +23,11 @@ class FoodAdapter: RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val currentFood: Food = foodList[position]
         with(holder.binding){
-            rvTitle.text = currentFood.Title
-            rvCountProtein.text = currentFood.Protein.toString()
-            rvCountFats.text = currentFood.Fats.toString()
-            rvCountCarbs.text = currentFood.Carbs.toString()
-            rvCountCalories.text = currentFood.Calories.toString()
+            rvTitle.text = currentFood.title
+            rvCountProtein.text = currentFood.protein.toString()
+            rvCountFats.text = currentFood.fats.toString()
+            rvCountCarbs.text = currentFood.carbs.toString()
+            rvCountCalories.text = currentFood.calories.toString()
         }
     }
 
