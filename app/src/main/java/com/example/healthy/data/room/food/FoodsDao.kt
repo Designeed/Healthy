@@ -13,8 +13,11 @@ interface FoodsDao {
     @Query("SELECT * FROM food WHERE title = :title")
     suspend fun findByTitle(title: String): FoodDbEntities?
 
+    @Query("SELECT * FROM food")
+    suspend fun getAllFood(): List<FoodDbEntities>
+
     @Query("SELECT * FROM food WHERE id = :foodId")
-    fun getById(foodId: Long): Flow<FoodDbEntities>
+    fun getById(foodId: Long): FoodDbEntities
 
     @Update(entity = FoodDbEntities::class)
     suspend fun updateFoodTitle(updateFoodTitleTuple: UpdateFoodTitleTuple)
