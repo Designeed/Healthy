@@ -1,39 +1,38 @@
 package com.example.healthy.data.room.food
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
-import com.example.healthy.data.room.food.entities.*
+import androidx.room.*
+import com.example.healthy.data.room.food.entity.*
 import kotlinx.coroutines.flow.Flow
-
 
 @Dao
 interface FoodsDao {
-    @Query("SELECT * FROM food WHERE title = :title")
-    suspend fun findByTitle(title: String): FoodDbEntities?
+    @Query("SELECT * FROM food WHERE title = :param")
+    suspend fun findByTitle(param: String): FoodDbEntity?
 
     @Query("SELECT * FROM food")
-    suspend fun getAllFood(): List<FoodDbEntities>
+    fun getAllFood(): Flow<List<FoodDbEntity>>
 
-    @Query("SELECT * FROM food WHERE id = :foodId")
-    fun getById(foodId: Long): FoodDbEntities
+    @Query("SELECT id FROM food WHERE title = :param")
+    suspend fun getIdByTitle(param: String): Long
 
-    @Update(entity = FoodDbEntities::class)
+    @Query("DELETE FROM food WHERE id = :param")
+    suspend fun deleteFoodById(param: Long)
+
+    @Update(entity = FoodDbEntity::class)
     suspend fun updateFoodTitle(updateFoodTitleTuple: UpdateFoodTitleTuple)
 
-    @Update(entity = FoodDbEntities::class)
+    @Update(entity = FoodDbEntity::class)
     suspend fun updateFoodProtein(updateFoodProteinTuple: UpdateFoodProteinTuple)
 
-    @Update(entity = FoodDbEntities::class)
+    @Update(entity = FoodDbEntity::class)
     suspend fun updateFoodFats(updateFoodFatsTuple: UpdateFoodFatsTuple)
 
-    @Update(entity = FoodDbEntities::class)
+    @Update(entity = FoodDbEntity::class)
     suspend fun updateFoodCarbs(updateCarbsTuple: UpdateFoodCarbsTuple)
 
-    @Update(entity = FoodDbEntities::class)
+    @Update(entity = FoodDbEntity::class)
     suspend fun updateFoodCalories(updateFoodCaloriesTuple: UpdateFoodCaloriesTuple)
 
     @Insert
-    suspend fun addFood(foodDbEntities: FoodDbEntities)
+    suspend fun addFood(foodDbEntities: FoodDbEntity)
 }

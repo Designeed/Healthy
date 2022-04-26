@@ -1,6 +1,7 @@
 package com.example.healthy.domain.repository
 
 import com.example.healthy.domain.model.Food
+import kotlinx.coroutines.flow.Flow
 
 interface FoodRepository {
 
@@ -8,9 +9,11 @@ interface FoodRepository {
 
     suspend fun findByTitle(param: String): Food
 
-    suspend fun getAllFood(): List<Food>
+    fun getAllFood(): Flow<List<Food>>
 
-    suspend fun getById(param: Long): Food
+    suspend fun getIdByTitle(param: String): Long
+
+    suspend fun deleteFood(param: Long)
 
     suspend fun updateTitle(foodId: Long, param: String)
 

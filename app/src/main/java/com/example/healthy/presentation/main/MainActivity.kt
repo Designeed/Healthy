@@ -15,9 +15,14 @@ import androidx.navigation.navOptions
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.healthy.data.repository.FoodRepositoryImpl
+import com.example.healthy.data.room.AppDataBase
+import com.example.healthy.data.room.food.FoodsDao
+import com.example.healthy.data.room.food.FoodsDao_Impl
+import com.example.healthy.domain.use_case.FoodService
+import com.example.healthy.presentation.util.adapters.FoodAdapter
 
 class MainActivity : AppCompatActivity(){
-
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationContainer: CoordinatorLayout
@@ -42,7 +47,6 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
-
     //Method for support back button on ActionBar
     override fun onSupportNavigateUp(): Boolean {
         navController.navigateUp()
@@ -60,9 +64,7 @@ class MainActivity : AppCompatActivity(){
 
     private fun btnChangeFragment() {
         if (navController.currentDestination?.id == R.id.fragment_journal)
-            navController.navigate(
-                R.id.action_fragment_journal_to_fragment_add_journal,
-                null,
+            navController.navigate(R.id.action_fragment_journal_to_fragment_add_journal, null,
                 navOptions {
                     anim {
                         enter = R.animator.nav_default_enter_anim
@@ -82,12 +84,6 @@ class MainActivity : AppCompatActivity(){
                         popExit = R.anim.nav_default_pop_exit_anim
                     }
                 })
-
-        else if (navController.currentDestination?.id == R.id.fragment_add_food){
-        }
-
-        else if (navController.currentDestination?.id == R.id.fragment_add_journal){
-        }
     }
 
     fun btnOpenSettings(item: MenuItem) {

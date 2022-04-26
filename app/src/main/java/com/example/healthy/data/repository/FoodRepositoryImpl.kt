@@ -2,17 +2,17 @@ package com.example.healthy.data.repository
 
 import android.database.sqlite.SQLiteConstraintException
 import com.example.healthy.data.room.food.FoodsDao
-import com.example.healthy.data.room.food.entities.*
+import com.example.healthy.data.room.food.entity.*
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.repository.FoodRepository
+import kotlinx.coroutines.flow.*
 import java.lang.Exception
 
 class FoodRepositoryImpl(private val foodDao: FoodsDao): FoodRepository {
 
     override suspend fun add(entity: Food) {
-
         try {
-            foodDao.addFood(FoodDbEntities.fromFoodModel(entity))
+            foodDao.addFood(FoodDbEntity.fromFoodModel(entity))
         } catch (e: SQLiteConstraintException) {
             val appException = Exception()
             appException.initCause(e)
@@ -21,14 +21,22 @@ class FoodRepositoryImpl(private val foodDao: FoodsDao): FoodRepository {
     }
 
     override suspend fun findByTitle(param: String): Food {
-        val foundedEntity = foodDao.findByTitle(param) ?: throw Exception("Данное блюдо не было найдено")
+        val foundedEntity = foodDao.findByTitle(param) ?: throw Exception()
 
         return foundedEntity.toFoodModel()
     }
 
-    override suspend fun getAllFood(): List<Food> = foodDao.getAllFood().map { it.toFoodModel() }
+    override fun getAllFood(): Flow<List<Food>>{
+        return foodDao.getAllFood().map {
+            entity -> entity.map {
+                it.toFoodModel()
+            }
+        }
+    }
 
-    override suspend fun getById(param: Long): Food = foodDao.getById(param).toFoodModel()
+    override suspend fun getIdByTitle(param: String): Long = foodDao.getIdByTitle(param)
+
+    override suspend fun deleteFood(param: Long) = foodDao.deleteFoodById(param)
 
     override suspend fun updateTitle(foodId: Long, param: String) {
         foodDao.updateFoodTitle(UpdateFoodTitleTuple(id = foodId, title = param))

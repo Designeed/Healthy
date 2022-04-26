@@ -5,14 +5,15 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.healthy.R
+import com.example.healthy.data.repository.FoodRepositoryImpl
+import com.example.healthy.data.room.food.FoodsDao
 import com.example.healthy.databinding.FragmentFoodBinding
-import com.example.healthy.domain.model.adapters.FoodAdapter
+import com.example.healthy.presentation.util.adapters.FoodAdapter
 import com.example.healthy.domain.use_case.FoodListener
 import com.example.healthy.domain.use_case.FoodService
 
 class FoodFragment : Fragment(){
-
-    private  lateinit var binding: FragmentFoodBinding
+    private lateinit var binding: FragmentFoodBinding
     private lateinit var adapter: FoodAdapter
     private val foodService = FoodService()
 
@@ -22,6 +23,7 @@ class FoodFragment : Fragment(){
     ): View? {
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_food, container, false)
+
         binding = FragmentFoodBinding.inflate(layoutInflater)
 
         adapter = FoodAdapter()
