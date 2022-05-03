@@ -10,6 +10,8 @@
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/bg_protein_fats_carbs.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/bg_transparent.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/dark_splash_screen.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/dark_style_spinner.xml" value="0.38051282051282054" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/edit_text_style.xml" value="0.38051282051282054" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_add_arrow.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_add_food.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_add_note.xml" value="0.38645833333333335" />
@@ -17,17 +19,22 @@
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_bg_light.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_calories.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_daily.xml" value="0.225" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_dark_spinner_arrow.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_food.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_journal.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2390625" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_left_arrow.xml" value="0.38645833333333335" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_light_spinner_arrow.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_logo.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_rounded_logo.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/ic_settings.xml" value="0.38645833333333335" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/light_stile_spinner.xml" value="0.38051282051282054" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/light_style_spinner.xml" value="0.38051282051282054" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/rounded_template.xml" value="0.38645833333333335" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/spinner_style.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/splash_screen.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/drawable/splash_screen_logo.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/font/default_text.xml" value="0.4005208333333333" />
@@ -36,8 +43,10 @@
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/add_food_item.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/food_item.xml" value="0.5" />
-        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_food.xml" value="0.5" />
-        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_journal.xml" value="0.2078125" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/food_recycler_view_item.xml" value="0.21331521739130435" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/food_spinner_item.xml" value="0.33" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_food.xml" value="0.22" />
+        <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_journal.xml" value="0.3798994974874372" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_add_journal_note.xml" value="0.26268115942028986" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_daily.xml" value="0.22" />
         <entry key="..\:/Users/Designeed/AndroidStudioProjects/Healthy/app/src/main/res/layout/fragment_dashboard.xml" value="0.36367753623188404" />
@@ -65,5 +74,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>

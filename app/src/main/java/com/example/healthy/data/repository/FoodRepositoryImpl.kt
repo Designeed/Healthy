@@ -1,6 +1,7 @@
 package com.example.healthy.data.repository
 
 import android.database.sqlite.SQLiteConstraintException
+import android.widget.Toast
 import com.example.healthy.data.room.food.FoodsDao
 import com.example.healthy.data.room.food.entity.*
 import com.example.healthy.domain.model.Food
@@ -10,7 +11,7 @@ import java.lang.Exception
 
 class FoodRepositoryImpl(private val foodDao: FoodsDao): FoodRepository {
 
-    override suspend fun add(entity: Food) {
+    override suspend fun add(entity: Food){
         try {
             foodDao.addFood(FoodDbEntity.fromFoodModel(entity))
         } catch (e: SQLiteConstraintException) {

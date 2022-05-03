@@ -36,6 +36,7 @@
         <item name="android:background">@drawable/rounded_template</item>
         <item name="android:backgroundTint">@color/ItemBackgroundColor</item>
         <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/nunito_bold</item>
     </style>
 
     <style name="CardBackground">
@@ -46,7 +47,7 @@
         <item name="android:paddingTop">15dp</item>
         <item name="fontFamily">@font/nunito_bold</item>
         <item name="android:textSize">@dimen/large_text_size</item>
-        <item name="android:inputType">number|textNoSuggestions</item>
+        <item name="android:inputType">numberDecimal</item>
         <item name="android:background">@drawable/rounded_template</item>
         <item name="android:backgroundTint">@color/ItemBackgroundColor</item>
         <item name="android:textColor">@color/white</item>
@@ -59,5 +60,9 @@
 
     <style name="RecyclerBackground">
         <item name="cardBackgroundColor">@color/ItemBackgroundColor</item>
+    </style>
+
+    <style name="SpinnerStyle">
+        <item name="android:background">@drawable/dark_style_spinner</item>
     </style>
 </resources>

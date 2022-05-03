@@ -14,4 +14,7 @@
     <string name="Y">У</string>
     <string name="J">Ж</string>
     <string name="B">Б</string>
+    <string name="text_enter_the_food">Выберите блюдо</string>
+    <string name="enter_weight_of_food">Введите вес блюда в граммах</string>
+    <string name="gramm">Г.</string>
 </resources>

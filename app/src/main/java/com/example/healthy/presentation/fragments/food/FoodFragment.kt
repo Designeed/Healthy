@@ -6,16 +6,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
-import com.example.healthy.data.room.food.FoodsDao
+import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.databinding.FragmentFoodBinding
-import com.example.healthy.presentation.util.adapters.FoodAdapter
-import com.example.healthy.domain.use_case.FoodListener
-import com.example.healthy.domain.use_case.FoodService
+import com.example.healthy.domain.model.Food
+import com.example.healthy.presentation.util.adapters.FoodRecyclerViewAdapter
 
 class FoodFragment : Fragment(){
     private lateinit var binding: FragmentFoodBinding
-    private lateinit var adapter: FoodAdapter
-    private val foodService = FoodService()
+    private lateinit var recyclerViewAdapter: FoodRecyclerViewAdapter
+    private lateinit var foodViewModel: FoodViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,26 +25,21 @@ class FoodFragment : Fragment(){
 
         binding = FragmentFoodBinding.inflate(layoutInflater)
 
-        adapter = FoodAdapter()
+        recyclerViewAdapter = FoodRecyclerViewAdapter()
 
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
-        binding.recyclerView.adapter = adapter
-        foodService.addListener(foodListener)
+        binding.recyclerView.adapter = recyclerViewAdapter
+
+        foodViewModel = FoodViewModel((FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao())))
+        foodViewModel.foodListLifeData.observe(viewLifecycleOwner) { foodList ->
+            recyclerViewAdapter.foodList = foodList as ArrayList<Food>
+        }
 
         return binding.root
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        foodService.deleteListener(foodListener)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.action_bar_settings, menu)
         super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    private val foodListener: FoodListener = {
-        adapter.foodList = it
     }
 }

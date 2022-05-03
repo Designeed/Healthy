@@ -2,10 +2,11 @@ package com.example.healthy.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.lifecycle.lifecycleScope
 import com.example.healthy.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,16 +17,23 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.healthy.data.repository.FoodRepositoryImpl
-import com.example.healthy.data.room.AppDataBase
-import com.example.healthy.data.room.food.FoodsDao
-import com.example.healthy.data.room.food.FoodsDao_Impl
-import com.example.healthy.domain.use_case.FoodService
-import com.example.healthy.presentation.util.adapters.FoodAdapter
+import com.example.healthy.domain.model.Food
+import com.example.healthy.domain.use_case.AddFoodUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import java.lang.Exception
+import com.example.healthy.data.room.AppDataBase as AppDataBase
 
 class MainActivity : AppCompatActivity(){
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationContainer: CoordinatorLayout
+    private lateinit var dbRepository: FoodRepositoryImpl
+
+    private val notificationFlow = MutableSharedFlow<String?>(replay = 1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +48,20 @@ class MainActivity : AppCompatActivity(){
         bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        val dbContext = AppDataBase.getDatabase(context = this.applicationContext).getFoodsDao()
+        dbRepository = FoodRepositoryImpl(dbContext)
         findViewById<FloatingActionButton>(R.id.fab).also {
             it.setOnClickListener{
-                btnChangeFragment()
+                floatActionButtonClick()
             }
         }
+
+        notificationFlow.onEach {
+            it?.let{
+                Toast.makeText(this.applicationContext, it, Toast.LENGTH_SHORT).show()
+                notificationFlow.tryEmit(null)
+            }
+        }.launchIn(lifecycleScope)
     }
 
     //Method for support back button on ActionBar
@@ -62,9 +79,9 @@ class MainActivity : AppCompatActivity(){
         super.onBackPressed()
     }
 
-    private fun btnChangeFragment() {
-        if (navController.currentDestination?.id == R.id.fragment_journal)
-            navController.navigate(R.id.action_fragment_journal_to_fragment_add_journal, null,
+    private fun floatActionButtonClick() {
+        when (navController.currentDestination?.id) {
+            R.id.fragment_journal -> navController.navigate(R.id.action_fragment_journal_to_fragment_add_journal, null,
                 navOptions {
                     anim {
                         enter = R.animator.nav_default_enter_anim
@@ -73,9 +90,8 @@ class MainActivity : AppCompatActivity(){
                         popExit = R.anim.nav_default_pop_exit_anim
                     }
                 })
-
-        else if (navController.currentDestination?.id == R.id.fragment_food)
-            navController.navigate(R.id.action_fragment_food_to_fragment_add_food, null,
+            R.id.fragment_food ->
+                navController.navigate(R.id.action_fragment_food_to_fragment_add_food, null,
                 navOptions {
                     anim {
                         enter = R.anim.nav_default_enter_anim
@@ -84,6 +100,30 @@ class MainActivity : AppCompatActivity(){
                         popExit = R.anim.nav_default_pop_exit_anim
                     }
                 })
+            R.id.fragment_add_food ->
+            {
+                val title = findViewById<EditText>(R.id.txtBox_foodName).text.toString()
+                val protein = findViewById<EditText>(R.id.txtBox_protein).text.toString()
+                val fats = findViewById<EditText>(R.id.txtBox_fat).text.toString()
+                val carbs = findViewById<EditText>(R.id.txtBox_сarbs).text.toString()
+                val calories = findViewById<EditText>(R.id.txtBox_calories).text.toString()
+
+                if (title.isBlank() || protein.isBlank() || fats.isBlank() || carbs.isBlank() || calories.isBlank())
+                    return Toast.makeText(this.applicationContext, "Заполните все поля", Toast.LENGTH_SHORT).show()
+
+                val accessedFood = Food(title, protein.toInt(), fats.toInt(), carbs.toInt(), calories.toInt())
+                val addFoodUseCase = AddFoodUseCase(accessedFood, dbRepository)
+
+                lifecycleScope.launch(Dispatchers.IO){
+                    try {
+                        addFoodUseCase.execute()
+                        notificationFlow.tryEmit("Блюдо успешно добавлено")
+                    } catch (e: Exception){
+                        notificationFlow.tryEmit("Данное блюдо уже существует")
+                    }
+                }
+            }
+        }
     }
 
     fun btnOpenSettings(item: MenuItem) {

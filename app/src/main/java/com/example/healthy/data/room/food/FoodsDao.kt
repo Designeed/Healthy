@@ -34,5 +34,5 @@ interface FoodsDao {
     suspend fun updateFoodCalories(updateFoodCaloriesTuple: UpdateFoodCaloriesTuple)
 
     @Insert
-    suspend fun addFood(foodDbEntities: FoodDbEntity)
+    fun addFood(foodDbEntities: FoodDbEntity)
 }
