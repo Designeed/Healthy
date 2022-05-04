@@ -29,7 +29,9 @@ class FoodRepositoryImpl(private val foodDao: FoodsDao): FoodRepository {
 
     override fun getAllFood(): Flow<List<Food>>{
         return foodDao.getAllFood().map {
-            entity -> entity.map {
+            entity -> entity.sortedBy{
+                it.title
+            }.map {
                 it.toFoodModel()
             }
         }
