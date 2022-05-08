@@ -6,7 +6,6 @@ import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.lifecycle.lifecycleScope
 import com.example.healthy.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,22 +17,21 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.domain.model.Food
-import com.example.healthy.domain.use_case.AddFoodUseCase
+import com.example.healthy.domain.use_cases.AddFoodUseCase
+import com.example.healthy.domain.use_cases.NotificationUseCase
+import com.example.healthy.domain.use_cases.ValidateOnBlankUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.lang.Exception
 import com.example.healthy.data.room.AppDataBase as AppDataBase
 
 class MainActivity : AppCompatActivity(){
+
+    private lateinit var toastMessage: Toast
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationContainer: CoordinatorLayout
     private lateinit var dbRepository: FoodRepositoryImpl
-
-    private val notificationFlow = MutableSharedFlow<String?>(replay = 1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,20 +46,12 @@ class MainActivity : AppCompatActivity(){
         bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val dbContext = AppDataBase.getDatabase(context = this.applicationContext).getFoodsDao()
-        dbRepository = FoodRepositoryImpl(dbContext)
+        dbRepository = FoodRepositoryImpl(AppDataBase.getDatabase(this.applicationContext).getFoodsDao())
         findViewById<FloatingActionButton>(R.id.fab).also {
             it.setOnClickListener{
                 floatActionButtonClick()
             }
         }
-
-        notificationFlow.onEach {
-            it?.let{
-                Toast.makeText(this.applicationContext, it, Toast.LENGTH_SHORT).show()
-                notificationFlow.tryEmit(null)
-            }
-        }.launchIn(lifecycleScope)
     }
 
     //Method for support back button on ActionBar
@@ -90,6 +80,7 @@ class MainActivity : AppCompatActivity(){
                         popExit = R.anim.nav_default_pop_exit_anim
                     }
                 })
+
             R.id.fragment_food ->
                 navController.navigate(R.id.action_fragment_food_to_fragment_add_food, null,
                 navOptions {
@@ -100,6 +91,7 @@ class MainActivity : AppCompatActivity(){
                         popExit = R.anim.nav_default_pop_exit_anim
                     }
                 })
+
             R.id.fragment_add_food ->
             {
                 val title = findViewById<EditText>(R.id.txtBox_foodName).text.toString()
@@ -108,19 +100,18 @@ class MainActivity : AppCompatActivity(){
                 val carbs = findViewById<EditText>(R.id.txtBox_сarbs).text.toString()
                 val calories = findViewById<EditText>(R.id.txtBox_calories).text.toString()
 
-                if (title.isBlank() || protein.isBlank() || fats.isBlank() || carbs.isBlank() || calories.isBlank())
-                    return Toast.makeText(this.applicationContext, "Заполните все поля", Toast.LENGTH_SHORT).show()
+                if (!ValidateOnBlankUseCase().execute(title, protein, fats, carbs, calories)){
+                    return NotificationUseCase.execute(applicationContext, "Заполните все поля")
+                }
 
-                val accessedFood = Food(title, protein.toInt(), fats.toInt(), carbs.toInt(), calories.toInt())
-                val addFoodUseCase = AddFoodUseCase(accessedFood, dbRepository)
-
-                lifecycleScope.launch(Dispatchers.IO){
-                    try {
-                        addFoodUseCase.execute()
-                        notificationFlow.tryEmit("Блюдо успешно добавлено")
-                    } catch (e: Exception){
-                        notificationFlow.tryEmit("Данное блюдо уже существует")
+                try {
+                    val addedFood = Food(title, protein.toInt(), fats.toInt(), carbs.toInt(), calories.toInt())
+                    runBlocking(Dispatchers.Default) {
+                        AddFoodUseCase().execute(addedFood, dbRepository)
                     }
+                    NotificationUseCase.execute(applicationContext, "Блюдо успешно добавлено")
+                } catch (e: Exception){
+                    NotificationUseCase.execute(applicationContext, "Данное блюдо уже существует")
                 }
             }
         }
