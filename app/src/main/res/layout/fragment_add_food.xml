@@ -22,7 +22,7 @@
         style="@style/TextStyle"/>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/txtBox_foodName"
+        android:id="@+id/txtBox_foodTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -38,7 +38,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-
         android:textSize="@dimen/default_text_size"
         android:text="@string/content_food"
         style="@style/TextStyle"/>

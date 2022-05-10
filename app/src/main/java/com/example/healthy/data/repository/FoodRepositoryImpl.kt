@@ -14,14 +14,12 @@ class FoodRepositoryImpl(private val foodDao: FoodsDao): FoodRepository {
     override suspend fun add(entity: Food){
         try {
             foodDao.addFood(FoodDbEntity.fromFoodModel(entity))
-        } catch (e: SQLiteConstraintException) {
-            val appException = Exception()
-            appException.initCause(e)
-            throw appException
+        } catch (ex: SQLiteConstraintException) {
+            throw ex
         }
     }
 
-    override suspend fun findByTitle(param: String): Food {
+    override suspend fun getFoodByTitle(param: String): Food {
         val foundedEntity = foodDao.findByTitle(param) ?: throw Exception()
 
         return foundedEntity.toFoodModel()
@@ -42,23 +40,20 @@ class FoodRepositoryImpl(private val foodDao: FoodsDao): FoodRepository {
     override suspend fun deleteFood(param: Long) = foodDao.deleteFoodById(param)
 
     override suspend fun updateTitle(foodId: Long, param: String) {
-        foodDao.updateFoodTitle(UpdateFoodTitleTuple(id = foodId, title = param))
+        try {
+            foodDao.updateFoodTitle(UpdateFoodTitleTuple(id = foodId, title = param))
+        } catch (ex: SQLiteConstraintException) {
+            throw ex
+        }
     }
 
-    override suspend fun updateProteins(foodId: Long, param: Int) {
-        foodDao.updateFoodProtein(UpdateFoodProteinTuple(id = foodId, protein = param))
-    }
+    override suspend fun updateProteins(foodId: Long, param: Int) = foodDao.updateFoodProtein(UpdateFoodProteinTuple(id = foodId, protein = param))
 
-    override suspend fun updateFats(foodId: Long, param: Int) {
-        foodDao.updateFoodFats(UpdateFoodFatsTuple(id = foodId, fats = param))
-    }
+    override suspend fun updateFats(foodId: Long, param: Int) = foodDao.updateFoodFats(UpdateFoodFatsTuple(id = foodId, fats = param))
 
-    override suspend fun updateCarbs(foodId: Long, param: Int) {
-        foodDao.updateFoodCarbs(UpdateFoodCarbsTuple(id = foodId, carbs = param))
-    }
+    override suspend fun updateCarbs(foodId: Long, param: Int) = foodDao.updateFoodCarbs(UpdateFoodCarbsTuple(id = foodId, carbs = param))
 
-    override suspend fun updateCalories(foodId: Long, param: Int) {
-        foodDao.updateFoodCalories(UpdateFoodCaloriesTuple(id = foodId, calories = param))
-    }
+    override suspend fun updateCalories(foodId: Long, param: Int) = foodDao.updateFoodCalories(UpdateFoodCaloriesTuple(id = foodId, calories = param))
+
 
 }

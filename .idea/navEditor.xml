@@ -47,8 +47,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="176" />
-                            <option name="y" value="-60" />
+                            <option name="x" value="399" />
+                            <option name="y" value="-409" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -66,17 +66,34 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="fragment_edit_food">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="407" />
+                            <option name="y" value="-12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="fragment_food">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="172" />
-                            <option name="y" value="-385" />
+                            <option name="x" value="145" />
+                            <option name="y" value="-227" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_fragment_food_to_editFoodFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_fragment_food_to_fragment_add_food">
                               <value>
                                 <LayoutPositions />
@@ -113,8 +130,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-61" />
-                            <option name="y" value="-220" />
+                            <option name="x" value="-63" />
+                            <option name="y" value="-240" />
                           </Point>
                         </option>
                       </LayoutPositions>

@@ -19,6 +19,6 @@ class FoodViewModel(private val repository: FoodRepository): ViewModel() {
                     foodListLifeData.postValue(items)
                 }
             }
-        } catch (e: Exception){}
+        } catch (e: Exception){ }
     }
 }

@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.chauthai.swipereveallayout.SwipeRevealLayout
+    android:id="@+id/swipeRevealLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:mode="same_level"
-    app:dragEdge="right">
+    app:dragEdge="right"
+    android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/btn_Edit_Food"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:backgroundTint="#60f542"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/rounded_template"
                 android:src="@drawable/ic_edit"/>
 
             <ImageButton
+                android:id="@+id/btn_Delete_Food"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:backgroundTint="#FF3D00"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:background="@drawable/rounded_template"
                 android:src="@drawable/ic_delete"/>
         </LinearLayout>
@@ -45,10 +47,8 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="5dp"
             style="@style/RecyclerBackground">
