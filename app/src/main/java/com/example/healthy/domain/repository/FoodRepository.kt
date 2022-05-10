@@ -7,7 +7,7 @@ interface FoodRepository {
 
     suspend fun add(entity: Food)
 
-    suspend fun findByTitle(param: String): Food
+    suspend fun getFoodByTitle(param: String): Food
 
     fun getAllFood(): Flow<List<Food>>
 
