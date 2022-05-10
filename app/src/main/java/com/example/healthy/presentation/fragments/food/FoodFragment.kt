@@ -44,9 +44,8 @@ class FoodFragment : Fragment(){
 
         foodViewModel = FoodViewModel((FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao())))
         foodViewModel.foodListLifeData.observe(viewLifecycleOwner) { foodList ->
-            recyclerViewAdapter.foodList = foodList as ArrayList<Food>
+            recyclerViewAdapter.data = foodList as ArrayList<Food>
         }
-
         return binding.root
     }
 

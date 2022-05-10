@@ -21,12 +21,12 @@
 
     <Spinner
         android:id="@+id/foodSpinner"
-        style="@style/SpinnerStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="25dp"
+        android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown"
-        tools:ignore="SpeakableTextPresentCheck"/>
+        tools:ignore="SpeakableTextPresentCheck"
+        style="@style/SpinnerStyle"/>
 
     <TextView
         android:layout_width="match_parent"

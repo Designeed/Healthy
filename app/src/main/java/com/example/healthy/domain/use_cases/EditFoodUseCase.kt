@@ -11,13 +11,8 @@ class EditFoodUseCase{
         val currentFood = repository.getFoodByTitle(savedTitle)
         val currentId = repository.getIdByTitle(savedTitle)
 
-        if (currentFood.title != editedFood.title) {
-            try {
-                repository.updateTitle(currentId, editedFood.title)
-            } catch (ex: SQLiteConstraintException) {
-                throw ex
-            }
-        }
+        if (currentFood.title != editedFood.title)
+            repository.updateTitle(currentId, editedFood.title)
 
         if (currentFood.protein != editedFood.protein)
             repository.updateProteins(currentId, editedFood.protein)

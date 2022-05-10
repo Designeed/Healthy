@@ -44,10 +44,10 @@ class MainActivity : AppCompatActivity(){
         bottomNavigationView.menu.getItem(1).isEnabled = false
 
         appBarConfiguration = AppBarConfiguration(setOf(R.id.fragment_journal, R.id.fragment_food))
+
         navController = findNavController(R.id.fragmentContainer)
         bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
 
         dbRepository = FoodRepositoryImpl(AppDataBase.getDatabase(this.applicationContext).getFoodsDao())
         findViewById<FloatingActionButton>(R.id.fab).also {
@@ -95,6 +95,11 @@ class MainActivity : AppCompatActivity(){
                     runBlocking(Dispatchers.Default) {
                         AddFoodUseCase().execute(addedFood, dbRepository)
                     }
+                    findViewById<EditText>(R.id.txtBox_foodTitle).text.clear()
+                    findViewById<EditText>(R.id.txtBox_protein).text.clear()
+                    findViewById<EditText>(R.id.txtBox_fat).text.clear()
+                    findViewById<EditText>(R.id.txtBox_сarbs).text.clear()
+                    findViewById<EditText>(R.id.txtBox_calories).text.clear()
                     NotificationUseCase.execute(applicationContext, "Блюдо успешно добавлено")
                 } catch (e: Exception){
                     NotificationUseCase.execute(applicationContext, "Данное блюдо уже существует")

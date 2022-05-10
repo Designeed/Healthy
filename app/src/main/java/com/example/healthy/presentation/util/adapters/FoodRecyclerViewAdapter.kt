@@ -13,11 +13,12 @@ class FoodRecyclerViewAdapter(
     val onEdit: (String) -> Unit,
     val onDelete: (String) -> Unit
 ): RecyclerView.Adapter<FoodRecyclerViewAdapter.FoodViewHolder>() {
+
     private lateinit var binding: FoodRecyclerViewItemBinding
     private lateinit var context: Context
     private val viewBindHelper = ViewBinderHelper()
 
-    var foodList: List<Food> = emptyList()
+    var data: List<Food> = emptyList()
         set(newValue){
             field = newValue
             notifyDataSetChanged()
@@ -27,16 +28,15 @@ class FoodRecyclerViewAdapter(
         context = parent.context
         val inflater = LayoutInflater.from(parent.context)
         binding = FoodRecyclerViewItemBinding.inflate(inflater, parent, false)
-
         return FoodViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         viewBindHelper.setOpenOnlyOne(true)
-        viewBindHelper.bind(holder.binding.swipeRevealLayout, foodList.get(position).title)
-        viewBindHelper.closeLayout(foodList.get(position).title)
+        viewBindHelper.bind(holder.binding.swipeRevealLayout, data[position].title)
+        viewBindHelper.closeLayout(data[position].title)
 
-        val currentFood: Food = foodList[position]
+        val currentFood: Food = data[position]
         with(holder.binding){
             rvTitle.text = currentFood.title
             rvCountProtein.text = currentFood.protein.toString()
@@ -47,19 +47,19 @@ class FoodRecyclerViewAdapter(
 
         holder.binding.btnEditFood.setOnClickListener {
             runBlocking {
-                onEdit(foodList[position].title)
+                onEdit(data[position].title)
             }
         }
 
         holder.binding.btnDeleteFood.setOnClickListener {
             runBlocking {
-                onDelete(foodList[position].title)
+                onDelete(data[position].title)
 
             }
         }
     }
 
-    override fun getItemCount(): Int = foodList.size
+    override fun getItemCount(): Int = data.size
 
     class FoodViewHolder(
         val binding: FoodRecyclerViewItemBinding
