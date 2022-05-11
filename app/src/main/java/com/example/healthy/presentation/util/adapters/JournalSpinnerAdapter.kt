@@ -11,7 +11,7 @@ import com.example.healthy.domain.model.Food
 
 class JournalSpinnerAdapter: BaseAdapter() {
 
-    var data: List<Food> = emptyList()
+    var data: List<String> = emptyList()
         set(newValue){
             field = newValue
             notifyDataSetChanged()
@@ -21,7 +21,7 @@ class JournalSpinnerAdapter: BaseAdapter() {
         return data.size
     }
 
-    override fun getItem(position: Int): Food {
+    override fun getItem(position: Int): String {
         return data[position]
     }
 
@@ -34,7 +34,7 @@ class JournalSpinnerAdapter: BaseAdapter() {
 
         val item = getItem(position)
 
-        binding.foodTitle.text = item.title
+        binding.foodTitle.text = item
         return binding.root
     }
 
