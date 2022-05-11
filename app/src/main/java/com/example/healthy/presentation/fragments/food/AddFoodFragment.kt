@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
+import com.example.healthy.domain.use_cases.SetImageButtonUserCase
 import kotlinx.coroutines.runBlocking
 import com.example.healthy.domain.model.Food as Food
 
@@ -17,7 +18,11 @@ class AddFoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_add_food, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_food, container, false)
+
+        SetImageButtonUserCase.execute(R.drawable.ic_add_complete)
+
+        return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

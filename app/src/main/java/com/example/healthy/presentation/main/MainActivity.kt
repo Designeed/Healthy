@@ -1,6 +1,7 @@
 package com.example.healthy.presentation.main
 
 import android.database.sqlite.SQLiteConstraintException
+import android.location.SettingInjectorService
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -18,10 +19,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.domain.model.Food
-import com.example.healthy.domain.use_cases.AddFoodUseCase
-import com.example.healthy.domain.use_cases.EditFoodUseCase
-import com.example.healthy.domain.use_cases.NotificationService
-import com.example.healthy.domain.use_cases.ValidateOnBlankUseCase
+import com.example.healthy.domain.use_cases.*
 import com.example.healthy.presentation.fragments.food.EditFoodFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,6 +36,8 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigationContainer = findViewById(R.id.bottomNavigationContainer)
+        SetImageButtonUserCase(findViewById(R.id.fab))
+
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             floatActionButtonClick()
         }
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity(){
             R.id.fragment_food ->
                 navController.navigate(R.id.action_fragment_food_to_fragment_add_food)
 
-                    R.id.fragment_add_food -> {
+            R.id.fragment_add_food -> {
                 if (!ValidateOnBlankUseCase().execute(getListStringFromEditText())) {
                     return NotificationService.notify(applicationContext, "Заполните все поля")
                 }

@@ -9,6 +9,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
+import com.example.healthy.domain.use_cases.SetImageButtonUserCase
+import com.example.healthy.presentation.main.MainActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -21,6 +24,7 @@ class EditFoodFragment: Fragment() {
     ): View? {
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_edit_food, container, false)
+        SetImageButtonUserCase.execute(R.drawable.ic_edit_note)
 
         savedTitle = args.foodTitle
         lifecycleScope.launch {
@@ -33,6 +37,11 @@ class EditFoodFragment: Fragment() {
         }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        SetImageButtonUserCase.execute(R.drawable.ic_add_note)
+        super.onDestroyView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
