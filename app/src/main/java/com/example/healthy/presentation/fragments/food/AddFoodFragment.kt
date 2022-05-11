@@ -12,7 +12,6 @@ import kotlinx.coroutines.runBlocking
 import com.example.healthy.domain.model.Food as Food
 
 class AddFoodFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

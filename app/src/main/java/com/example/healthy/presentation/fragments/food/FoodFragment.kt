@@ -27,6 +27,17 @@ class FoodFragment : Fragment(){
         val view = inflater.inflate(R.layout.fragment_food, container, false)
         binding = FragmentFoodBinding.inflate(layoutInflater)
 
+        setUpRecyclerViewAdapter(view)
+
+        return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_bar_settings, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun setUpRecyclerViewAdapter(view: View){
         recyclerViewAdapter = FoodRecyclerViewAdapter(
             onEdit = { title  ->
                 val action = FoodFragmentDirections.actionFragmentFoodToEditFoodFragment(title)
@@ -46,11 +57,5 @@ class FoodFragment : Fragment(){
         foodViewModel.foodListLifeData.observe(viewLifecycleOwner) { foodList ->
             recyclerViewAdapter.data = foodList as ArrayList<Food>
         }
-        return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.action_bar_settings, menu)
-        super.onCreateOptionsMenu(menu, inflater)
     }
 }
