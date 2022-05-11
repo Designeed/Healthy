@@ -1,7 +1,6 @@
 package com.example.healthy.presentation.main
 
 import android.database.sqlite.SQLiteConstraintException
-import android.location.SettingInjectorService
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -20,7 +19,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.use_cases.*
-import com.example.healthy.presentation.fragments.food.EditFoodFragment
+import com.example.healthy.presentation.fragments.food.edit.EditFoodFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception

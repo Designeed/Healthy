@@ -1,4 +1,4 @@
-package com.example.healthy.presentation.fragments.journal
+package com.example.healthy.presentation.fragments.journal.add
 
 import android.os.Bundle
 import android.view.*

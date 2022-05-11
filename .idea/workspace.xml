@@ -13,22 +13,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9428350e-cde1-40bd-af0b-27723f354958" name="Default Changelist" comment="added dynamic icon for floatAction Button">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+    <list default="true" id="9428350e-cde1-40bd-af0b-27723f354958" name="Default Changelist" comment="refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/AddFoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/AddFoodFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/EditFoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/EditFoodFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/AddFoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/add/AddFoodFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/EditFoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/edit/EditFoodFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/AddJournalFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/add/AddJournalFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/AddJournalViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/add/AddJournalViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_food.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_journal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_journal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_food.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_app.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_app.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,11 +130,11 @@
       <recent name="com.example.healthy.data.repository" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.healthy.presentation.fragments.journal.add" />
+      <recent name="com.example.healthy.presentation.fragments.food.edit" />
+      <recent name="com.example.healthy.presentation.fragments.food.addFood" />
       <recent name="com.example.healthy.data.utils" />
       <recent name="com.example.healthy.presentation.main" />
-      <recent name="com.example.healthy.presentation.fragments" />
-      <recent name="com.example.healthy.presentation" />
-      <recent name="com.example.healthy.presentation.journal" />
     </key>
     <key name="android.template.-1473963461">
       <recent name="com.example.healthy.ui" />
@@ -498,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652284424191</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="refactoring">
+      <created>1652285131519</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1652285131519</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -567,8 +569,8 @@
     <MESSAGE value="Added implementation for spinner" />
     <MESSAGE value="minor update" />
     <MESSAGE value="added function for get list from database food title in spinner" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="added dynamic icon for floatAction Button" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dynamic icon for floatAction Button" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
 </project>

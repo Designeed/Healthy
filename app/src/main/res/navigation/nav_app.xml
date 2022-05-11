@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/fragment_add_journal"
-        android:name="com.example.healthy.presentation.fragments.journal.AddJournalFragment"
+        android:name="com.example.healthy.presentation.fragments.journal.add.AddJournalFragment"
         android:label="@string/actionBar_addJournal"
         tools:layout="@layout/fragment_add_journal"/>
 
@@ -52,14 +52,14 @@
 
     <fragment
         android:id="@+id/fragment_add_food"
-        android:name="com.example.healthy.presentation.fragments.food.AddFoodFragment"
+        android:name="com.example.healthy.presentation.fragments.food.add.AddFoodFragment"
         android:label="@string/actionBar_addFood"
         tools:layout="@layout/fragment_add_food">
     </fragment>
 
     <fragment
         android:id="@+id/fragment_edit_food"
-        android:name="com.example.healthy.presentation.fragments.food.EditFoodFragment"
+        android:name="com.example.healthy.presentation.fragments.food.edit.EditFoodFragment"
         android:label="Редактирование блюда" >
         <argument
             android:name="foodTitle"

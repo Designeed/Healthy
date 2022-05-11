@@ -1,11 +1,9 @@
-package com.example.healthy.presentation.fragments.journal
+package com.example.healthy.presentation.fragments.journal.add
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.repository.FoodRepository
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

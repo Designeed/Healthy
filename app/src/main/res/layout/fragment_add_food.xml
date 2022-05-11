@@ -11,7 +11,7 @@
     android:paddingEnd="16dp"
     android:clipToPadding="false"
     android:outlineProvider="bounds"
-    tools:context=".presentation.fragments.food.AddFoodFragment">
+    tools:context=".presentation.fragments.food.add.AddFoodFragment">
 
     <TextView
         android:layout_width="wrap_content"
