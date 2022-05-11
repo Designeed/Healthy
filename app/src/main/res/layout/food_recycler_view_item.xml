@@ -10,34 +10,32 @@
     app:dragEdge="right"
     android:layout_marginBottom="20dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_Edit_Food"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btn_Edit_Food"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#60f542"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/rounded_template"
-                android:src="@drawable/ic_edit"/>
-
-            <ImageButton
-                android:id="@+id/btn_Delete_Food"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="#FF3D00"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:background="@drawable/rounded_template"
-                android:src="@drawable/ic_delete"/>
+            android:backgroundTint="#60f542"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_template"
+            android:src="@drawable/ic_edit"/>
+        <ImageButton
+            android:id="@+id/btn_Delete_Food"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="#FF3D00"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/rounded_template"
+            android:src="@drawable/ic_delete"/>
         </LinearLayout>
 
     <FrameLayout
@@ -50,7 +48,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="15dp"
-            app:cardElevation="5dp"
             style="@style/RecyclerBackground">
 
             <com.google.android.flexbox.FlexboxLayout

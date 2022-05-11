@@ -54,7 +54,7 @@ class FoodRecyclerViewAdapter(
         holder.binding.btnDeleteFood.setOnClickListener {
             runBlocking {
                 onDelete(data[position].title)
-
+                holder.binding.buttonPanel
             }
         }
     }
