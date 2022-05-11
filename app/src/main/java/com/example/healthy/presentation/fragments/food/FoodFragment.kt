@@ -11,6 +11,7 @@ import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.databinding.FragmentFoodBinding
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.use_cases.DeleteFoodUseCase
+import com.example.healthy.domain.use_cases.EditFoodUseCase
 import com.example.healthy.domain.use_cases.SetImageButtonUserCase
 import com.example.healthy.presentation.util.adapters.FoodRecyclerViewAdapter
 import kotlinx.coroutines.runBlocking
@@ -42,8 +43,9 @@ class FoodFragment : Fragment(){
     private fun setUpRecyclerViewAdapter(view: View){
         recyclerViewAdapter = FoodRecyclerViewAdapter(
             onEdit = { title  ->
-                val action = FoodFragmentDirections.actionFragmentFoodToEditFoodFragment(title)
-                findNavController().navigate(action)
+                //val action = FoodFragmentDirections.actionFragmentFoodToEditFoodFragment(title)
+                EditFoodUseCase.selectedFoodTitle = title
+                findNavController().navigate(R.id.action_fragment_food_to_editFoodFragment)
             },
             onDelete = { title ->
                 runBlocking {

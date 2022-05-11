@@ -29,19 +29,18 @@ class MainActivity : AppCompatActivity(){
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationContainer: CoordinatorLayout
-    private lateinit var dbRepository: FoodRepositoryImpl
+    private lateinit var dbFoodDao: FoodRepositoryImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigationContainer = findViewById(R.id.bottomNavigationContainer)
+        dbFoodDao = FoodRepositoryImpl(AppDataBase.getDatabase(applicationContext).getFoodsDao())
         SetImageButtonUserCase(findViewById(R.id.fab))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             floatActionButtonClick()
         }
-
-        dbRepository = FoodRepositoryImpl(AppDataBase.getDatabase(this.applicationContext).getFoodsDao())
         setUpBottomNavigationView()
     }
 
@@ -77,7 +76,7 @@ class MainActivity : AppCompatActivity(){
                     try {
                         AddFoodUseCase().execute(
                             getFoodFromEditText(),
-                            dbRepository)
+                            dbFoodDao)
 
                         clearEditText()
 
@@ -101,12 +100,9 @@ class MainActivity : AppCompatActivity(){
                         val editingFood = getFoodFromEditText()
 
                         EditFoodUseCase().execute(
-                            EditFoodFragment.savedTitle,
                             editingFood,
-                            dbRepository
+                            dbFoodDao
                         )
-
-                        EditFoodFragment.savedTitle = editingFood.title
                         navController.navigate(R.id.action_fragment_edit_food_to_fragment_food)
 
                         NotificationService.notifyWithContext(applicationContext, "Блюдо успешно обновлено")

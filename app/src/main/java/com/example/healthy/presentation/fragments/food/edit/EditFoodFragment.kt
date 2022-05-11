@@ -5,15 +5,15 @@ import android.view.*
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
 import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
+import com.example.healthy.domain.use_cases.EditFoodUseCase
 import com.example.healthy.domain.use_cases.SetImageButtonUserCase
 import kotlinx.coroutines.launch
 
 class EditFoodFragment: Fragment() {
-    private val args: EditFoodFragmentArgs by navArgs()
+    //private val args: EditFoodFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,11 +23,9 @@ class EditFoodFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_edit_food, container, false)
 
         SetImageButtonUserCase.execute(R.drawable.ic_edit_note)
-        savedTitle = args.foodTitle
+
         lifecycleScope.launch {
-            val editingFood = FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao()).getFoodByTitle(
-                savedTitle
-            )
+            val editingFood = FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao()).getFoodByTitle(EditFoodUseCase.selectedFoodTitle)
             view.findViewById<EditText>(R.id.txtBox_foodTitle).setText(editingFood.title)
             view.findViewById<EditText>(R.id.txtBox_protein).setText(editingFood.protein.toString())
             view.findViewById<EditText>(R.id.txtBox_fat).setText(editingFood.fats.toString())
@@ -46,9 +44,5 @@ class EditFoodFragment: Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.action_bar_settings, menu)
         super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    companion object {
-        var savedTitle: String = ""
     }
 }

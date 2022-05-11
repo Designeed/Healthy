@@ -14,8 +14,8 @@ class FoodViewModel(private val repository: FoodRepository): ViewModel() {
 
     init{
         try {
-            viewModelScope.launch{
-                repository.getAllFood().collect{ items ->
+            viewModelScope.launch {
+                repository.getAllFood().collect { items ->
                     foodListLifeData.postValue(items)
                 }
             }

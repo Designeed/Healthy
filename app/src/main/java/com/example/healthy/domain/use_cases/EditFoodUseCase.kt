@@ -1,15 +1,12 @@
 package com.example.healthy.domain.use_cases
 
-import android.database.sqlite.SQLiteConstraintException
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.repository.FoodRepository
 
 class EditFoodUseCase{
-
-    suspend fun execute(savedTitle: String, editedFood: Food, repository: FoodRepository) {
-
-        val currentFood = repository.getFoodByTitle(savedTitle)
-        val currentId = repository.getIdByTitle(savedTitle)
+    suspend fun execute(editedFood: Food, repository: FoodRepository) {
+        val currentFood = repository.getFoodByTitle(selectedFoodTitle)
+        val currentId = repository.getIdByTitle(selectedFoodTitle)
 
         if (currentFood.title != editedFood.title)
             repository.updateTitle(currentId, editedFood.title)
@@ -25,5 +22,9 @@ class EditFoodUseCase{
 
         if (currentFood.calories != editedFood.calories)
             repository.updateCalories(currentId, editedFood.calories)
+    }
+
+    companion object {
+        lateinit var selectedFoodTitle: String
     }
 }

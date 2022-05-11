@@ -45,17 +45,12 @@ class FoodRecyclerViewAdapter(
             rvCountCalories.text = currentFood.calories.toString()
         }
 
-        holder.binding.btnEditFood.setOnClickListener {
-            runBlocking {
-                onEdit(data[position].title)
-            }
+        binding.btnEditFood.setOnClickListener {
+            onEdit(data[position].title)
         }
 
-        holder.binding.btnDeleteFood.setOnClickListener {
-            runBlocking {
-                onDelete(data[position].title)
-                holder.binding.buttonPanel
-            }
+        binding.btnDeleteFood.setOnClickListener {
+            onDelete(data[position].title)
         }
     }
 
