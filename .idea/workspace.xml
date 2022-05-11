@@ -13,7 +13,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9428350e-cde1-40bd-af0b-27723f354958" name="Default Changelist" comment="refactoring">
+    <list default="true" id="9428350e-cde1-40bd-af0b-27723f354958" name="Default Changelist" comment="added dynamic icon for floatAction Button">
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -25,14 +25,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/AddFoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/AddFoodFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/EditFoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/EditFoodFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/FoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/food/FoodFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/AddJournalFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/AddJournalFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/JournalFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/fragments/journal/JournalFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthy/presentation/main/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -495,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652281310769</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="added dynamic icon for floatAction Button">
+      <created>1652284424191</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1652284424191</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -541,7 +544,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Create project" />
     <MESSAGE value="Added Splash Screen" />
     <MESSAGE value="Unused logo" />
     <MESSAGE value="Changed icon" />
@@ -566,6 +568,7 @@
     <MESSAGE value="minor update" />
     <MESSAGE value="added function for get list from database food title in spinner" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="added dynamic icon for floatAction Button" />
+    <option name="LAST_COMMIT_MESSAGE" value="added dynamic icon for floatAction Button" />
   </component>
 </project>

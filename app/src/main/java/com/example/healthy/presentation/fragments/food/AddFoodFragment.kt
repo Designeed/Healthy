@@ -18,11 +18,8 @@ class AddFoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        val view = inflater.inflate(R.layout.fragment_add_food, container, false)
-
         SetImageButtonUserCase.execute(R.drawable.ic_add_complete)
-
-        return view
+        return inflater.inflate(R.layout.fragment_add_food, container, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -24,8 +24,8 @@ class EditFoodFragment: Fragment() {
     ): View? {
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_edit_food, container, false)
-        SetImageButtonUserCase.execute(R.drawable.ic_edit_note)
 
+        SetImageButtonUserCase.execute(R.drawable.ic_edit_note)
         savedTitle = args.foodTitle
         lifecycleScope.launch {
             val editingFood = FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao()).getFoodByTitle(savedTitle)
