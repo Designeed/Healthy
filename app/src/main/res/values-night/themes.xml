@@ -64,5 +64,6 @@
 
     <style name="SpinnerStyle">
         <item name="android:background">@drawable/dark_style_spinner</item>
+        <item name="android:popupBackground">@color/ItemBackgroundColor</item>
     </style>
 </resources>

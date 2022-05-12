@@ -68,18 +68,23 @@ class MainActivity : AppCompatActivity(){
                 navController.navigate(R.id.action_fragment_food_to_fragment_add_food)
 
             R.id.fragment_add_food -> {
-                if (!ValidateOnBlankUseCase().execute(getListStringFromEditText())) {
+                val stringList = getListStringFromEditText()
+
+                if (!ValidateOnBlankUseCase().execute(stringList)) {
                     return NotificationService.notify(applicationContext, "Заполните все поля")
                 }
 
                 lifecycleScope.launch(Dispatchers.IO) {
                     try {
+                        val editingFood = mapToFood(stringList)
+
                         AddFoodUseCase().execute(
-                            getFoodFromEditText(),
+                            editingFood,
                             dbFoodDao)
 
-                        clearEditText()
-
+                        lifecycleScope.launch(Dispatchers.Main){
+                            clearEditText()
+                        }
                         NotificationService.notifyWithContext(applicationContext, "Блюдо успешно добавлено")
                     } catch (e: Exception) {
                         NotificationService.notifyWithContext(
@@ -91,20 +96,22 @@ class MainActivity : AppCompatActivity(){
             }
 
             R.id.fragment_edit_food -> {
-                if (!ValidateOnBlankUseCase().execute(getListStringFromEditText())) {
+                val listString = getListStringFromEditText()
+
+                if (!ValidateOnBlankUseCase().execute(listString)) {
                     return NotificationService.notify(applicationContext, "Заполните все поля")
                 }
 
                 lifecycleScope.launch(Dispatchers.Main) {
                     try {
-                        val editingFood = getFoodFromEditText()
+                        val editingFood = mapToFood(listString)
 
                         EditFoodUseCase().execute(
                             editingFood,
                             dbFoodDao
                         )
-                        navController.navigate(R.id.action_fragment_edit_food_to_fragment_food)
 
+                        navController.navigate(R.id.action_fragment_edit_food_to_fragment_food)
                         NotificationService.notifyWithContext(applicationContext, "Блюдо успешно обновлено")
                     } catch (ex: SQLiteConstraintException) {
                         NotificationService.notifyWithContext(applicationContext, "Данное блюдо уже существует")
@@ -141,19 +148,13 @@ class MainActivity : AppCompatActivity(){
         )
     }
 
-    private fun getFoodFromEditText(): Food{
-        val title = findViewById<EditText>(R.id.txtBox_foodTitle).text.toString()
-        val protein = findViewById<EditText>(R.id.txtBox_protein).text.toString().toInt()
-        val fats = findViewById<EditText>(R.id.txtBox_fat).text.toString().toInt()
-        val carbs = findViewById<EditText>(R.id.txtBox_сarbs).text.toString().toInt()
-        val calories = findViewById<EditText>(R.id.txtBox_calories).text.toString().toInt()
-
+    private fun mapToFood(list : List<String>) : Food {
         return Food(
-            title,
-            protein,
-            fats,
-            carbs,
-            calories
+            list[0],
+            list[1].toInt(),
+            list[2].toInt(),
+            list[3].toInt(),
+            list[4].toInt(),
         )
     }
 
