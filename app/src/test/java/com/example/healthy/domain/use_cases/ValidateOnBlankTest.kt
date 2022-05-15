@@ -35,18 +35,6 @@ class ValidateOnBlankTest {
     }
 
     @Test
-    fun `List with out empty items`() {
-        val list = listOf(
-            "item 1",
-            "item 2",
-            "item 3"
-        )
-
-        val result = ValidateOnBlank().execute(list)
-        assertThat(result).isTrue()
-    }
-
-    @Test
     fun `List with one empty items`() {
         val list = listOf(
             "item 1",
@@ -57,5 +45,17 @@ class ValidateOnBlankTest {
 
         val result = ValidateOnBlank().execute(list)
         assertThat(result).isFalse()
+    }
+
+    @Test
+    fun `List with out empty items`() {
+        val list = listOf(
+            "item 1",
+            "item 2",
+            "item 3"
+        )
+
+        val result = ValidateOnBlank().execute(list)
+        assertThat(result).isTrue()
     }
 }

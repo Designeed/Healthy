@@ -49,7 +49,7 @@ class DeleteFoodUseCaseTest {
     }
 
     @Test
-    fun deleteFood() = scope.runTest {
+    fun deleteFood_success_foodShouldDeleted() = scope.runTest {
         val food = Food("1", 1, 1, 1, 1)
 
         AddFoodUseCase().execute(food, repository)
@@ -66,7 +66,7 @@ class DeleteFoodUseCaseTest {
     }
 
     @Test
-    fun deleteFoodWithTwoNote() = scope.runTest {
+    fun deleteFoodWithTwoNote_success_food1ShouldDeleted() = scope.runTest {
         val food1 = Food("1", 1, 1, 1, 1)
         val food2 = Food("2", 1, 1, 1, 1)
 

@@ -50,7 +50,7 @@ class AddFoodUseCaseTest {
     }
 
     @Test
-    fun insertOneFood() = scope.runTest {
+    fun insertOneFood_success_FoodShouldAdded() = scope.runTest {
         val food = Food("1", 1, 1, 1, 1)
 
         AddFoodUseCase().execute(food, repository)
@@ -62,7 +62,7 @@ class AddFoodUseCaseTest {
     }
 
     @Test
-    fun insertTwoFood() = scope.runTest  {
+    fun insertTwoFood_success_TwoFoodsShouldAdded() = scope.runTest  {
         val food1 = Food("1", 1, 1, 1, 1)
         val food2 = Food("2", 1, 1, 1, 1)
 
@@ -78,7 +78,7 @@ class AddFoodUseCaseTest {
     }
 
     @Test
-    fun insertAlreadyExistFood() = scope.runTest  {
+    fun insertAlreadyExistFood_success_OneFoodShouldAdded() = scope.runTest  {
         val food = Food("1", 1, 1, 1, 1)
         AddFoodUseCase().execute(food, repository)
 

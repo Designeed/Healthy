@@ -49,7 +49,7 @@ class EditFoodUseCaseTest {
     }
 
     @Test
-    fun editFood() = scope.runTest {
+    fun editFood_success_FoodShouldRenamed() = scope.runTest {
         val food = Food("1", 1, 1, 1, 1)
         val editedFood = Food("Измененная еда", 3, 1 ,1 ,2)
 
