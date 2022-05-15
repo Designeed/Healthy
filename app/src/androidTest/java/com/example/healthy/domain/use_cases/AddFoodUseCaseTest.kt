@@ -10,9 +10,10 @@ import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.domain.model.Food
 import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -23,6 +24,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @SmallTest
 class AddFoodUseCaseTest {
+    private val dispatcher = UnconfinedTestDispatcher()
+    private val scope = TestScope(dispatcher)
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -37,15 +40,17 @@ class AddFoodUseCaseTest {
             AppDataBase::class.java
         ).allowMainThreadQueries().build()
         repository = FoodRepositoryImpl(database.getFoodsDao())
+        Dispatchers.setMain(dispatcher)
     }
 
     @After
     fun tearDown() {
         database.close()
+        Dispatchers.resetMain()
     }
 
     @Test
-    fun insertOneFood() = runBlockingTest {
+    fun insertOneFood() = scope.runTest {
         val food = Food("1", 1, 1, 1, 1)
 
         AddFoodUseCase().execute(food, repository)
@@ -57,7 +62,7 @@ class AddFoodUseCaseTest {
     }
 
     @Test
-    fun insertTwoFood() = runBlockingTest {
+    fun insertTwoFood() = scope.runTest  {
         val food1 = Food("1", 1, 1, 1, 1)
         val food2 = Food("2", 1, 1, 1, 1)
 
@@ -73,7 +78,7 @@ class AddFoodUseCaseTest {
     }
 
     @Test
-    fun insertAlreadyExistFood() = runBlockingTest {
+    fun insertAlreadyExistFood() = scope.runTest  {
         val food = Food("1", 1, 1, 1, 1)
         AddFoodUseCase().execute(food, repository)
 

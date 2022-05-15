@@ -9,9 +9,10 @@ import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.domain.model.Food
 import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -22,6 +23,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @SmallTest
 class EditFoodUseCaseTest {
+    private val dispatcher = UnconfinedTestDispatcher()
+    private val scope = TestScope(dispatcher)
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -36,15 +39,17 @@ class EditFoodUseCaseTest {
             AppDataBase::class.java
         ).allowMainThreadQueries().build()
         repository = FoodRepositoryImpl(database.getFoodsDao())
+        Dispatchers.setMain(dispatcher)
     }
 
     @After
     fun tearDown() {
         database.close()
+        Dispatchers.resetMain()
     }
 
     @Test
-    fun editFood() = runBlockingTest {
+    fun editFood() = scope.runTest {
         val food = Food("1", 1, 1, 1, 1)
         val editedFood = Food("Измененная еда", 3, 1 ,1 ,2)
 
