@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.healthy.R
-import com.example.healthy.domain.use_cases.SetImageButtonUserCase
+import com.example.healthy.domain.use_cases.SetImageButton
 
 class JournalFragment : Fragment() {
     override fun onCreateView(
@@ -14,7 +14,7 @@ class JournalFragment : Fragment() {
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_journal, container, false)
 
-        SetImageButtonUserCase.execute(R.drawable.ic_add_note)
+        SetImageButton.execute(R.drawable.ic_add_note)
 
         return view
     }

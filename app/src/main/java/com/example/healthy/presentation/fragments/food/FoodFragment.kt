@@ -12,7 +12,7 @@ import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.databinding.FragmentFoodBinding
 import com.example.healthy.domain.use_cases.DeleteFoodUseCase
 import com.example.healthy.domain.use_cases.EditFoodUseCase
-import com.example.healthy.domain.use_cases.SetImageButtonUserCase
+import com.example.healthy.domain.use_cases.SetImageButton
 import com.example.healthy.presentation.util.adapters.FoodRecyclerViewAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,10 +27,9 @@ class FoodFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
-        val view = inflater.inflate(R.layout.fragment_food, container, false)
         binding = FragmentFoodBinding.inflate(layoutInflater)
 
-        SetImageButtonUserCase.execute(R.drawable.ic_add_note)
+        SetImageButton.execute(R.drawable.ic_add_note)
         setUpRecyclerViewAdapter()
         initializeLifeData()
 

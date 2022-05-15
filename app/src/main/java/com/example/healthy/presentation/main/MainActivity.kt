@@ -19,7 +19,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.use_cases.*
-import com.example.healthy.presentation.fragments.food.edit.EditFoodFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         bottomNavigationContainer = findViewById(R.id.bottomNavigationContainer)
         dbFoodDao = FoodRepositoryImpl(AppDataBase.getDatabase(applicationContext).getFoodsDao())
-        SetImageButtonUserCase(findViewById(R.id.fab))
+        SetImageButton(findViewById(R.id.fab))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             floatActionButtonClick()
@@ -70,7 +69,7 @@ class MainActivity : AppCompatActivity(){
             R.id.fragment_add_food -> {
                 val stringList = getListStringFromEditText()
 
-                if (!ValidateOnBlankUseCase().execute(stringList)) {
+                if (!ValidateOnBlank().execute(stringList)) {
                     return NotificationService.notify(applicationContext, "Заполните все поля")
                 }
 
@@ -98,7 +97,7 @@ class MainActivity : AppCompatActivity(){
             R.id.fragment_edit_food -> {
                 val listString = getListStringFromEditText()
 
-                if (!ValidateOnBlankUseCase().execute(listString)) {
+                if (!ValidateOnBlank().execute(listString)) {
                     return NotificationService.notify(applicationContext, "Заполните все поля")
                 }
 

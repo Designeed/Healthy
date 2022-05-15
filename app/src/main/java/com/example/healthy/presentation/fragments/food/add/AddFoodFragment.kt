@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.healthy.R
-import com.example.healthy.domain.use_cases.SetImageButtonUserCase
+import com.example.healthy.domain.use_cases.SetImageButton
 
 class AddFoodFragment : Fragment() {
     override fun onCreateView(
@@ -12,7 +12,7 @@ class AddFoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        SetImageButtonUserCase.execute(R.drawable.ic_add_complete)
+        SetImageButton.execute(R.drawable.ic_add_complete)
         return inflater.inflate(R.layout.fragment_add_food, container, false)
     }
 

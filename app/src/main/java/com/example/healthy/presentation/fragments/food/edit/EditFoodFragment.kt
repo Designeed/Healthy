@@ -9,7 +9,7 @@ import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.domain.use_cases.EditFoodUseCase
-import com.example.healthy.domain.use_cases.SetImageButtonUserCase
+import com.example.healthy.domain.use_cases.SetImageButton
 import kotlinx.coroutines.launch
 
 class EditFoodFragment: Fragment() {
@@ -22,7 +22,7 @@ class EditFoodFragment: Fragment() {
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_edit_food, container, false)
 
-        SetImageButtonUserCase.execute(R.drawable.ic_edit_note)
+        SetImageButton.execute(R.drawable.ic_edit_note)
 
         lifecycleScope.launch {
             val editingFood = FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao()).getFoodByTitle(EditFoodUseCase.selectedFoodTitle)
@@ -37,7 +37,7 @@ class EditFoodFragment: Fragment() {
     }
 
     override fun onDestroyView() {
-        SetImageButtonUserCase.execute(R.drawable.ic_add_note)
+        SetImageButton.execute(R.drawable.ic_add_note)
         super.onDestroyView()
     }
 
