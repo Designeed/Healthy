@@ -1,4 +1,4 @@
-package com.example.healthy.domain.use_cases
+package com.example.healthy.domain.use_cases.food
 
 import com.example.healthy.domain.repository.FoodRepository
 

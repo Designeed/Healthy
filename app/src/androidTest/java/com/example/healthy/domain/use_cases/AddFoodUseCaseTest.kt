@@ -9,6 +9,7 @@ import androidx.test.filters.SmallTest
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.domain.model.Food
+import com.example.healthy.domain.use_cases.food.AddFoodUseCase
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

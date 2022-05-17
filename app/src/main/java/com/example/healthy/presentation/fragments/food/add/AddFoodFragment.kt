@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.healthy.R
-import com.example.healthy.domain.use_cases.SetImageButton
+import com.example.healthy.domain.use_cases.shared.SetImageButton
 
 class AddFoodFragment : Fragment() {
     override fun onCreateView(

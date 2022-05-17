@@ -1,5 +1,6 @@
 package com.example.healthy.domain.use_cases
 
+import com.example.healthy.domain.use_cases.shared.ValidateOnBlank
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 

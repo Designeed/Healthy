@@ -10,9 +10,9 @@ import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.databinding.FragmentFoodBinding
-import com.example.healthy.domain.use_cases.DeleteFoodUseCase
-import com.example.healthy.domain.use_cases.EditFoodUseCase
-import com.example.healthy.domain.use_cases.SetImageButton
+import com.example.healthy.domain.use_cases.food.DeleteFoodUseCase
+import com.example.healthy.domain.use_cases.food.EditFoodUseCase
+import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.presentation.util.adapters.FoodRecyclerViewAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

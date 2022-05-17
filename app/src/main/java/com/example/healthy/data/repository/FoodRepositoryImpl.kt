@@ -1,7 +1,6 @@
 package com.example.healthy.data.repository
 
 import android.database.sqlite.SQLiteConstraintException
-import android.widget.Toast
 import com.example.healthy.data.room.food.FoodsDao
 import com.example.healthy.data.room.food.entity.*
 import com.example.healthy.domain.model.Food

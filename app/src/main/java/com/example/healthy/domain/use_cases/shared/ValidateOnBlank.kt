@@ -1,4 +1,4 @@
-package com.example.healthy.domain.use_cases
+package com.example.healthy.domain.use_cases.shared
 
 class ValidateOnBlank {
     fun execute(params: List<String>): Boolean {

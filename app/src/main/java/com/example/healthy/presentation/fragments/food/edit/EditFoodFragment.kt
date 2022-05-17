@@ -8,8 +8,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
-import com.example.healthy.domain.use_cases.EditFoodUseCase
-import com.example.healthy.domain.use_cases.SetImageButton
+import com.example.healthy.domain.use_cases.food.EditFoodUseCase
+import com.example.healthy.domain.use_cases.shared.SetImageButton
 import kotlinx.coroutines.launch
 
 class EditFoodFragment: Fragment() {
@@ -25,7 +25,8 @@ class EditFoodFragment: Fragment() {
         SetImageButton.execute(R.drawable.ic_edit_note)
 
         lifecycleScope.launch {
-            val editingFood = FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao()).getFoodByTitle(EditFoodUseCase.selectedFoodTitle)
+            val editingFood = FoodRepositoryImpl(AppDataBase.getDatabase(view.context).getFoodsDao()).getFoodByTitle(
+                EditFoodUseCase.selectedFoodTitle)
             view.findViewById<EditText>(R.id.txtBox_foodTitle).setText(editingFood.title)
             view.findViewById<EditText>(R.id.txtBox_protein).setText(editingFood.protein.toString())
             view.findViewById<EditText>(R.id.txtBox_fat).setText(editingFood.fats.toString())
