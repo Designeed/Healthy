@@ -1,5 +1,5 @@
 package com.example.healthy.domain.model
 
-import java.sql.Date
+import java.util.*
 
 data class Journal(val food: Food, val date: Date)
