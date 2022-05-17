@@ -1,5 +1,6 @@
 package com.example.healthy.domain.repository
 
+import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.model.Journal
 import kotlinx.coroutines.flow.Flow
 import java.util.*
@@ -12,7 +13,7 @@ interface JournalRepository {
 
     suspend fun deleteJournalNoteById(param: Long)
 
-    suspend fun updateJournalNote(foodId: Long, journal: Journal)
+    suspend fun updateJournalNote(foodId: Long, food: Food, journal: Journal)
 
-    fun addJournalNote(foodId: Long, journal: Journal)
+    suspend fun addJournalNote(foodId: Long, food: Food, journal: Journal)
 }

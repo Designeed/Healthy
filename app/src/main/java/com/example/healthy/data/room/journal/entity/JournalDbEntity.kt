@@ -25,4 +25,8 @@ import java.util.*
 data class JournalDbEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name = "food_id") val foodId: Long,
+    val protein: Int,
+    val fats: Int,
+    val carbs: Int,
+    val calories: Int,
     val date: Date)

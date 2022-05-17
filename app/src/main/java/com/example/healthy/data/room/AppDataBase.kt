@@ -9,7 +9,7 @@ import com.example.healthy.data.room.journal.entity.JournalDbEntity
 import com.example.healthy.data.utils.DateTypeConverter
 
 @Database(
-    version = 1,
+    version = 2,
     entities = [
         FoodDbEntity::class,
         JournalDbEntity::class
@@ -38,7 +38,7 @@ abstract class AppDataBase: RoomDatabase(){
                     context.applicationContext,
                     AppDataBase::class.java,
                     "healthy_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.Spinner
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.lifecycleScope
 import com.example.healthy.R
@@ -17,8 +18,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.healthy.data.repository.FoodRepositoryImpl
+import com.example.healthy.data.repository.JournalRepositoryImpl
 import com.example.healthy.domain.model.Food
-import com.example.healthy.domain.use_cases.*
+import com.example.healthy.domain.use_cases.food.AddFoodUseCase
+import com.example.healthy.domain.use_cases.food.EditFoodUseCase
+import com.example.healthy.domain.use_cases.journal.AddJournalNoteUseCase
+import com.example.healthy.domain.use_cases.shared.NotificationService
+import com.example.healthy.domain.use_cases.shared.SetImageButton
+import com.example.healthy.domain.use_cases.shared.ValidateOnBlank
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -29,12 +36,14 @@ class MainActivity : AppCompatActivity(){
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationContainer: CoordinatorLayout
     private lateinit var dbFoodDao: FoodRepositoryImpl
+    private lateinit var dbJournalDao: JournalRepositoryImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigationContainer = findViewById(R.id.bottomNavigationContainer)
         dbFoodDao = FoodRepositoryImpl(AppDataBase.getDatabase(applicationContext).getFoodsDao())
+        dbJournalDao = JournalRepositoryImpl(AppDataBase.getDatabase(applicationContext).getJournalDao())
         SetImageButton(findViewById(R.id.fab))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
@@ -97,9 +106,8 @@ class MainActivity : AppCompatActivity(){
             R.id.fragment_edit_food -> {
                 val listString = getListStringFromEditText()
 
-                if (!ValidateOnBlank().execute(listString)) {
+                if (!ValidateOnBlank().execute(listString))
                     return NotificationService.notify(applicationContext, "Заполните все поля")
-                }
 
                 lifecycleScope.launch(Dispatchers.Main) {
                     try {
@@ -114,6 +122,26 @@ class MainActivity : AppCompatActivity(){
                         NotificationService.notifyWithContext(applicationContext, "Блюдо успешно обновлено")
                     } catch (ex: SQLiteConstraintException) {
                         NotificationService.notifyWithContext(applicationContext, "Данное блюдо уже существует")
+                    }
+                }
+            }
+
+            R.id.fragment_add_journal -> {
+                val weight = findViewById<EditText>(R.id.txtBox_weight).text.toString()
+                val foodTitle = findViewById<Spinner>(R.id.foodSpinner).selectedItem.toString()
+
+                if (weight.isBlank())
+                    return NotificationService.notify(applicationContext, "Заполните поле")
+
+                lifecycleScope.launch(Dispatchers.IO) {
+                    try {
+                        val foodId = dbFoodDao.getIdByTitle(foodTitle)
+                        val food = dbFoodDao.getFoodByTitle(foodTitle)
+                        AddJournalNoteUseCase().execute(foodId, food, weight.toFloat().toInt(), dbJournalDao)
+                        NotificationService.notifyWithContext(applicationContext, "Блюдо успешно добавлено")
+
+                    } catch (ex: Exception) {
+                        NotificationService.notifyWithContext(applicationContext, ex.message.toString())
                     }
                 }
             }
@@ -138,22 +166,16 @@ class MainActivity : AppCompatActivity(){
         val carbs = findViewById<EditText>(R.id.txtBox_сarbs).text.toString()
         val calories = findViewById<EditText>(R.id.txtBox_calories).text.toString()
 
-        return mutableListOf(
-            title,
-            protein,
-            fats,
-            carbs,
-            calories
-        )
+        return mutableListOf(title, protein, fats, carbs, calories)
     }
 
     private fun mapToFood(list : List<String>) : Food {
         return Food(
             list[0],
-            list[1].toInt(),
-            list[2].toInt(),
-            list[3].toInt(),
-            list[4].toInt(),
+            list[1].toFloat().toInt(),
+            list[2].toFloat().toInt(),
+            list[3].toFloat().toInt(),
+            list[4].toFloat().toInt(),
         )
     }
 

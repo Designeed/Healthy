@@ -7,7 +7,7 @@ import com.example.healthy.R
 import android.widget.Spinner
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
-import com.example.healthy.domain.use_cases.SetImageButton
+import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.presentation.util.adapters.JournalSpinnerAdapter
 
 class AddJournalFragment : Fragment() {

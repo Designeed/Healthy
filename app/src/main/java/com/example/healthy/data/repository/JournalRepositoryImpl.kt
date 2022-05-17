@@ -2,6 +2,7 @@ package com.example.healthy.data.repository
 
 import com.example.healthy.data.room.journal.JournalDao
 import com.example.healthy.data.room.journal.entity.JournalDbEntity
+import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.model.Journal
 import com.example.healthy.domain.repository.JournalRepository
 import kotlinx.coroutines.flow.Flow
@@ -25,10 +26,26 @@ class JournalRepositoryImpl(private val journalDao: JournalDao) : JournalReposit
 
     override suspend fun getJournalId(foodId: Long, date: Date): Long = journalDao.getJournalId(foodId, date)
 
-    override suspend fun updateJournalNote(foodId: Long, journal: Journal) = journalDao.updateJournalNote(JournalDbEntity(0, foodId, journal.date))
+    override suspend fun updateJournalNote(foodId: Long, food: Food, journal: Journal) =
+        journalDao.updateJournalNote(JournalDbEntity(
+            0,
+            foodId,
+            food.protein,
+            food.fats,
+            food.carbs,
+            food.calories,
+            journal.date))
 
     override suspend fun deleteJournalNoteById(param: Long) = journalDao.deleteJournalNoteById(param)
 
-    override fun addJournalNote(foodId: Long, journal: Journal) = journalDao.addJournalNote(JournalDbEntity(0, foodId, journal.date))
+    override suspend fun addJournalNote(foodId: Long, food: Food, journal: Journal) =
+        journalDao.addJournalNote(JournalDbEntity(
+            0,
+            foodId,
+            food.protein,
+            food.fats,
+            food.carbs,
+            food.calories,
+            journal.date))
 
 }
