@@ -15,7 +15,7 @@ interface JournalDao {
     fun getAllJournal(): Flow<Map<FoodDbEntity, JournalDbEntity>>
 
     @Query("SELECT id FROM journal WHERE food_id = :foodId AND date = :date")
-    suspend fun getJournalId(foodId: Long, date: Date): Long
+    suspend fun getJournalId(foodId: Long, date: String): Long
 
     @Query("DELETE FROM journal WHERE id = :param")
     suspend fun deleteJournalNoteById(param: Long)

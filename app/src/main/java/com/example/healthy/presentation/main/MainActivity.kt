@@ -29,6 +29,8 @@ import com.example.healthy.domain.use_cases.shared.ValidateOnBlank
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import java.text.DateFormat
+import java.util.*
 import com.example.healthy.data.room.AppDataBase as AppDataBase
 
 class MainActivity : AppCompatActivity(){
@@ -127,18 +129,25 @@ class MainActivity : AppCompatActivity(){
             }
 
             R.id.fragment_add_journal -> {
+                val spinner = findViewById<Spinner>(R.id.foodSpinner)
                 val weight = findViewById<EditText>(R.id.txtBox_weight).text.toString()
-                val foodTitle = findViewById<Spinner>(R.id.foodSpinner).selectedItem.toString()
+
+                if (spinner.selectedItemPosition == -1)
+                    return NotificationService.notify(applicationContext, "Пополните список еды")
 
                 if (weight.isBlank())
                     return NotificationService.notify(applicationContext, "Заполните поле")
 
                 lifecycleScope.launch(Dispatchers.IO) {
                     try {
+                        val foodTitle = spinner.selectedItem.toString()
                         val foodId = dbFoodDao.getIdByTitle(foodTitle)
                         val food = dbFoodDao.getFoodByTitle(foodTitle)
                         AddJournalNoteUseCase().execute(foodId, food, weight.toFloat().toInt(), dbJournalDao)
-                        NotificationService.notifyWithContext(applicationContext, "Блюдо успешно добавлено")
+                        lifecycleScope.launch(Dispatchers.Main){
+                            navController.navigate(R.id.action_fragment_add_journal_to_fragment_journal)
+                        }
+                        NotificationService.notifyWithContext(applicationContext, "Запись успешно добавлена")
 
                     } catch (ex: Exception) {
                         NotificationService.notifyWithContext(applicationContext, ex.message.toString())

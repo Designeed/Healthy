@@ -29,4 +29,4 @@ data class JournalDbEntity(
     val fats: Int,
     val carbs: Int,
     val calories: Int,
-    val date: Date)
+    val date: String)

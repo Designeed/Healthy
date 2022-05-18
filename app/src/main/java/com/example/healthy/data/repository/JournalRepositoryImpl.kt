@@ -7,6 +7,7 @@ import com.example.healthy.domain.model.Journal
 import com.example.healthy.domain.repository.JournalRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import java.text.DateFormat
 import java.util.*
 
 class JournalRepositoryImpl(private val journalDao: JournalDao) : JournalRepository {
@@ -17,7 +18,7 @@ class JournalRepositoryImpl(private val journalDao: JournalDao) : JournalReposit
                 val journalEntity = it.value
                 Journal(
                     foodEntity.toFoodModel(),
-                    journalEntity.date
+                    DateFormat.getDateInstance().format(Date())
                 )
             }.sortedByDescending {
                 it.date
@@ -25,7 +26,7 @@ class JournalRepositoryImpl(private val journalDao: JournalDao) : JournalReposit
         }
     }
 
-    override suspend fun getJournalId(foodId: Long, date: Date): Long = journalDao.getJournalId(foodId, date)
+    override suspend fun getJournalId(foodId: Long, date: String): Long = journalDao.getJournalId(foodId, date)
 
     override suspend fun updateJournalNote(foodId: Long, food: Food, journal: Journal) =
         journalDao.updateJournalNote(JournalDbEntity(

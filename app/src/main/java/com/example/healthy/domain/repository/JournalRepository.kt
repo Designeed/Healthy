@@ -9,7 +9,7 @@ interface JournalRepository {
 
     fun getAllJournal(): Flow<List<Journal>>
 
-    suspend fun getJournalId(foodId: Long, date: Date): Long
+    suspend fun getJournalId(foodId: Long, date: String): Long
 
     suspend fun deleteJournalNoteById(param: Long)
 

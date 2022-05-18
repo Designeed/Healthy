@@ -3,6 +3,7 @@ package com.example.healthy.presentation.fragments.journal
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.healthy.R
 import com.example.healthy.data.repository.JournalRepositoryImpl
@@ -11,6 +12,8 @@ import com.example.healthy.databinding.FragmentJournalBinding
 import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.presentation.util.adapters.JournalRecyclerViewAdapter
 import com.example.healthy.presentation.util.section.ItemSectionDecoration
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class JournalFragment : Fragment() {
     private lateinit var binding: FragmentJournalBinding

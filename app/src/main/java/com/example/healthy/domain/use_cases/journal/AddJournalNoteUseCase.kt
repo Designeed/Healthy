@@ -12,7 +12,7 @@ class AddJournalNoteUseCase {
         val calculatedFood = calculateFood(food, weight)
         val journal = Journal(
             calculatedFood,
-            Calendar.getInstance().time
+            getCurrentDate()
         )
         repository.addJournalNote(foodId, calculatedFood, journal)
     }
@@ -27,4 +27,6 @@ class AddJournalNoteUseCase {
             food.calories * weight
         )
     }
+
+    private fun getCurrentDate() : String = DateFormat.getDateInstance().format(Date())
 }

@@ -6,7 +6,6 @@ import com.example.healthy.data.room.food.FoodsDao
 import com.example.healthy.data.room.food.entity.FoodDbEntity
 import com.example.healthy.data.room.journal.JournalDao
 import com.example.healthy.data.room.journal.entity.JournalDbEntity
-import com.example.healthy.data.utils.DateTypeConverter
 
 @Database(
     version = 2,
@@ -15,9 +14,8 @@ import com.example.healthy.data.utils.DateTypeConverter
         JournalDbEntity::class
     ]
 )
-@TypeConverters(DateTypeConverter::class)
 
-abstract class AppDataBase: RoomDatabase(){
+abstract class AppDataBase: RoomDatabase() {
 
     abstract fun getFoodsDao(): FoodsDao
 

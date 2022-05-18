@@ -24,7 +24,15 @@
         android:id="@+id/fragment_add_journal"
         android:name="com.example.healthy.presentation.fragments.journal.add.AddJournalFragment"
         android:label="@string/actionBar_addJournal"
-        tools:layout="@layout/fragment_add_journal"/>
+        tools:layout="@layout/fragment_add_journal">
+        <action
+            android:id="@+id/action_fragment_add_journal_to_fragment_journal"
+            app:destination="@id/fragment_journal"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_food"
