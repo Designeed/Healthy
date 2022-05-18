@@ -15,11 +15,12 @@ class JournalRepositoryImpl(private val journalDao: JournalDao) : JournalReposit
             entities.map {
                 val foodEntity = it.key
                 val journalEntity = it.value
-
                 Journal(
                     foodEntity.toFoodModel(),
                     journalEntity.date
                 )
+            }.sortedByDescending {
+                it.date
             }
         }
     }

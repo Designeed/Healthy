@@ -3,6 +3,8 @@ package com.example.healthy.domain.use_cases.journal
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.model.Journal
 import com.example.healthy.domain.repository.JournalRepository
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddJournalNoteUseCase {
