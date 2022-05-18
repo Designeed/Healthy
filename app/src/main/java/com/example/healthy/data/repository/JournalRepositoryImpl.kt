@@ -14,11 +14,11 @@ class JournalRepositoryImpl(private val journalDao: JournalDao) : JournalReposit
     override fun getAllJournal(): Flow<List<Journal>> {
         return journalDao.getAllJournal().map { entities ->
             entities.map {
-                val foodEntity = it.key
-                val journalEntity = it.value
+                val journalEntity = it.key
+                val foodEntity = it.value
                 Journal(
                     foodEntity.toFoodModel(),
-                    DateFormat.getDateInstance().format(Date())
+                    journalEntity.date
                 )
             }.sortedByDescending {
                 it.date

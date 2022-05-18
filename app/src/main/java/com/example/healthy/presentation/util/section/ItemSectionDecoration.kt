@@ -76,7 +76,7 @@ class ItemSectionDecoration(
 
             if (getItemList().isNotEmpty() && (0 == position || itemModel.date != getItemList()[position - 1].date)) {
                 val top = childView.top - sectionItemHeight
-                drawSectionView(c, itemModel.date.toString(), top)
+                drawSectionView(c, itemModel.date, top)
             } else {
                 drawDivider(c, childView)
             }
@@ -121,7 +121,7 @@ class ItemSectionDecoration(
     }
 
     private fun dipToPx(context: Context, dipValue: Float): Int {
-        return (dipValue * context.resources.displayMetrics.density).toInt()
+        return (dipValue * context.resources.displayMetrics.scaledDensity).toInt()
     }
 
     private fun getScreenWidth(context: Context): Int {

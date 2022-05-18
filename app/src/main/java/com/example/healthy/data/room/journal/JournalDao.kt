@@ -11,8 +11,8 @@ import java.util.*
 
 @Dao
 interface JournalDao {
-    @Query("SELECT * FROM food LEFT JOIN journal ON food.id = journal.food_id")
-    fun getAllJournal(): Flow<Map<FoodDbEntity, JournalDbEntity>>
+    @Query("SELECT * FROM journal LEFT JOIN food ON food.id = journal.food_id")
+    fun getAllJournal(): Flow<Map<JournalDbEntity, FoodDbEntity>>
 
     @Query("SELECT id FROM journal WHERE food_id = :foodId AND date = :date")
     suspend fun getJournalId(foodId: Long, date: String): Long

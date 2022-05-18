@@ -14,7 +14,6 @@ import com.example.healthy.data.room.journal.entity.JournalDbEntity
         JournalDbEntity::class
     ]
 )
-
 abstract class AppDataBase: RoomDatabase() {
 
     abstract fun getFoodsDao(): FoodsDao
