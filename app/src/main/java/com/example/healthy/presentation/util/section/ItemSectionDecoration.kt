@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthy.domain.model.Journal
+import com.example.healthy.domain.util.StringConverter
 
 class ItemSectionDecoration(
     private val context: Context,
@@ -56,10 +57,11 @@ class ItemSectionDecoration(
 
         val currentItem = getItemList()[position]
         val previousItem = getItemList()[position - 1]
+        val currentDate = StringConverter().changeDateFormat(currentItem.date)
+        val previousDate = StringConverter().changeDateFormat(previousItem.date)
 
-        if (currentItem.date != previousItem.date )
+        if (currentDate != previousDate)
             outRect.top = sectionItemHeight
-
         else
             outRect.top = dividerHeight
     }
@@ -69,14 +71,14 @@ class ItemSectionDecoration(
 
         val childCount = parent.childCount
         for (i in 0 until childCount) {
-
             val childView = parent.getChildAt(i)
             val position: Int = parent.getChildAdapterPosition(childView)
             val itemModel = getItemList()[position]
+            val date = StringConverter().changeDateFormat(itemModel.date)
 
-            if (getItemList().isNotEmpty() && (0 == position || itemModel.date != getItemList()[position - 1].date)) {
+            if (getItemList().isNotEmpty() && (0 == position || date != StringConverter().changeDateFormat(getItemList()[position - 1].date))) {
                 val top = childView.top - sectionItemHeight
-                drawSectionView(c, itemModel.date, top)
+                drawSectionView(c, date, top)
             } else {
                 drawDivider(c, childView)
             }

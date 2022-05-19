@@ -10,23 +10,15 @@ import com.example.healthy.domain.model.Journal
 import java.util.*
 
 @Entity(
-    tableName = "journal",
-    foreignKeys = [
-        ForeignKey(
-            entity = FoodDbEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["food_id"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        )
-    ]
+    tableName = "journal"
 )
 
 data class JournalDbEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(name = "food_id") val foodId: Long,
+    val foodTitle: String,
     val protein: Int,
     val fats: Int,
     val carbs: Int,
     val calories: Int,
     val date: String)
+

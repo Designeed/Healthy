@@ -14,40 +14,32 @@ class JournalRepositoryImpl(private val journalDao: JournalDao) : JournalReposit
     override fun getAllJournal(): Flow<List<Journal>> {
         return journalDao.getAllJournal().map { entities ->
             entities.map {
-                val journalEntity = it.key
-                val foodEntity = it.value
                 Journal(
-                    foodEntity.toFoodModel(),
-                    journalEntity.date
-                )
+                    Food(
+                        it.foodTitle,
+                        it.protein,
+                        it.fats,
+                        it.carbs,
+                        it.calories),
+                    it.date)
             }.sortedByDescending {
                 it.date
             }
         }
     }
 
-    override suspend fun getJournalId(foodId: Long, date: String): Long = journalDao.getJournalId(foodId, date)
-
-    override suspend fun updateJournalNote(foodId: Long, food: Food, journal: Journal) =
-        journalDao.updateJournalNote(JournalDbEntity(
-            0,
-            foodId,
-            food.protein,
-            food.fats,
-            food.carbs,
-            food.calories,
-            journal.date))
+    override suspend fun getJournalId(title: String, date: String): Long = journalDao.getJournalId(title, date)
 
     override suspend fun deleteJournalNoteById(param: Long) = journalDao.deleteJournalNoteById(param)
 
-    override suspend fun addJournalNote(foodId: Long, food: Food, journal: Journal) =
+    override suspend fun addJournalNote(journal: Journal) =
         journalDao.addJournalNote(JournalDbEntity(
             0,
-            foodId,
-            food.protein,
-            food.fats,
-            food.carbs,
-            food.calories,
+            journal.food.title,
+            journal.food.protein,
+            journal.food.fats,
+            journal.food.carbs,
+            journal.food.calories,
             journal.date))
 
 }

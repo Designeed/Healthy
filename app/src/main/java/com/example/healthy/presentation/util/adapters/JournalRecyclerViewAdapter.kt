@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chauthai.swipereveallayout.ViewBinderHelper
-import com.example.healthy.databinding.RecyclerViewItemBinding
+import com.example.healthy.databinding.JournalRecyclerViewItemBinding
 import com.example.healthy.domain.model.Journal
-
+import com.example.healthy.domain.use_cases.shared.NotificationService
+import java.lang.Exception
 
 class JournalRecyclerViewAdapter(
-//    val onEdit: (String) -> Unit,
-//    val onDelete: (String) -> Unit
+    val onDelete: (title: String, date: String) -> Unit
 ) : RecyclerView.Adapter<JournalRecyclerViewAdapter.JournalViewHolder>() {
-    private lateinit var binding: RecyclerViewItemBinding
+    private lateinit var binding: JournalRecyclerViewItemBinding
     private lateinit var context: Context
     private val viewBindHelper = ViewBinderHelper()
 
-    var data = emptyList<Journal>()
+    var data = listOf<Journal>()
         set(newValue) {
             field = newValue
             notifyDataSetChanged()
@@ -26,14 +26,14 @@ class JournalRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalViewHolder {
         context = parent.context
         val inflater = LayoutInflater.from(parent.context)
-        binding = RecyclerViewItemBinding.inflate(inflater, parent, false)
+        binding = JournalRecyclerViewItemBinding.inflate(inflater, parent, false)
         return JournalViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: JournalViewHolder, position: Int) {
         viewBindHelper.setOpenOnlyOne(true)
-        viewBindHelper.bind(holder.binding.swipeRevealLayout, data[position].food.title)
-        viewBindHelper.closeLayout(data[position].food.title)
+        viewBindHelper.bind(holder.binding.swipeRevealLayout, data[position].date)
+        viewBindHelper.closeLayout(data[position].date)
 
         val currentJournal = data[position]
         with(holder.binding) {
@@ -43,11 +43,20 @@ class JournalRecyclerViewAdapter(
             rvCountCarbs.text = currentJournal.food.carbs.toString()
             rvCountCalories.text = currentJournal.food.calories.toString()
         }
+
+        binding.btnDeleteFood.setOnClickListener {
+            try {
+                //data.remove(currentJournal)
+                onDelete(currentJournal.food.title, currentJournal.date)
+            } catch (ex: Exception) {
+                NotificationService.notify(context, ex.message.toString())
+            }
+        }
     }
 
     override fun getItemCount(): Int = data.size
 
     class JournalViewHolder(
-        val binding: RecyclerViewItemBinding
+        val binding: JournalRecyclerViewItemBinding
     ) : RecyclerView.ViewHolder(binding.root)
 }

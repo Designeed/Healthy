@@ -141,9 +141,9 @@ class MainActivity : AppCompatActivity(){
                 lifecycleScope.launch(Dispatchers.IO) {
                     try {
                         val foodTitle = spinner.selectedItem.toString()
-                        val foodId = dbFoodDao.getIdByTitle(foodTitle)
                         val food = dbFoodDao.getFoodByTitle(foodTitle)
-                        AddJournalNoteUseCase().execute(foodId, food, weight.toFloat().toInt(), dbJournalDao)
+                        AddJournalNoteUseCase().execute(food, weight.toFloat(), dbJournalDao)
+
                         lifecycleScope.launch(Dispatchers.Main){
                             navController.navigate(R.id.action_fragment_add_journal_to_fragment_journal)
                         }

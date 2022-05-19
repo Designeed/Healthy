@@ -17,4 +17,8 @@
     <string name="text_enter_the_food">Выберите блюдо</string>
     <string name="enter_weight_of_food">Введите вес блюда в граммах</string>
     <string name="gramm">Г.</string>
+    <string name="theme_settings">Тема приложения</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Темная</string>
+    <string name="theme_auto">Авто</string>
 </resources>

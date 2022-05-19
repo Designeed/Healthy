@@ -9,11 +9,15 @@ import com.example.healthy.R
 import com.example.healthy.data.repository.JournalRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.databinding.FragmentJournalBinding
+import com.example.healthy.domain.model.Journal
+import com.example.healthy.domain.use_cases.journal.DeleteJournalNoteUseCase
+import com.example.healthy.domain.use_cases.journal.GetJournalNoteIdUseCase
+import com.example.healthy.domain.use_cases.shared.NotificationService
 import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.presentation.util.adapters.JournalRecyclerViewAdapter
 import com.example.healthy.presentation.util.section.ItemSectionDecoration
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class JournalFragment : Fragment() {
     private lateinit var binding: FragmentJournalBinding
@@ -21,16 +25,15 @@ class JournalFragment : Fragment() {
     private lateinit var recyclerViewAdapter: JournalRecyclerViewAdapter
     private lateinit var itemSectionDecoration: ItemSectionDecoration
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         setHasOptionsMenu(true)
         binding = FragmentJournalBinding.inflate(layoutInflater)
 
-        setUpRecyclerView()
         setUpRecyclerDecoration()
+        setUpRecyclerView()
         initializeLifeData()
         SetImageButton.execute(R.drawable.ic_add_note)
 
@@ -43,7 +46,21 @@ class JournalFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        recyclerViewAdapter = JournalRecyclerViewAdapter()
+        val journalDao = JournalRepositoryImpl(AppDataBase.getDatabase(requireContext()).getJournalDao())
+        recyclerViewAdapter = JournalRecyclerViewAdapter(
+            onDelete = {
+                title, date ->
+                lifecycleScope.launch {
+                    NotificationService.notifyWithContext(requireContext(), "$title \n $date")
+                    try {
+                        val journalId = GetJournalNoteIdUseCase().execute(title, date, journalDao)
+                        DeleteJournalNoteUseCase().execute(journalId, journalDao)
+                    } catch (ex: Exception) {
+                        NotificationService.notifyWithContext(requireContext(), ex.message.toString())
+                    }
+                }
+            }
+        )
         binding.journalRecycleView.layoutManager = LinearLayoutManager(requireContext())
         binding.journalRecycleView.adapter = recyclerViewAdapter
     }

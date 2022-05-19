@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "f2bcd16a5580f302cc6c5c92ebfbbd07",
+    "identityHash": "5faa2fe0401c1f9464b369782f44356c",
     "entities": [
       {
         "tableName": "food",
@@ -66,7 +66,7 @@
       },
       {
         "tableName": "journal",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `food_id` INTEGER NOT NULL, `protein` INTEGER NOT NULL, `fats` INTEGER NOT NULL, `carbs` INTEGER NOT NULL, `calories` INTEGER NOT NULL, `date` TEXT NOT NULL, FOREIGN KEY(`food_id`) REFERENCES `food`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foodTitle` TEXT NOT NULL, `protein` INTEGER NOT NULL, `fats` INTEGER NOT NULL, `carbs` INTEGER NOT NULL, `calories` INTEGER NOT NULL, `date` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -75,9 +75,9 @@
             "notNull": true
           },
           {
-            "fieldPath": "foodId",
-            "columnName": "food_id",
-            "affinity": "INTEGER",
+            "fieldPath": "foodTitle",
+            "columnName": "foodTitle",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -118,25 +118,13 @@
           "autoGenerate": true
         },
         "indices": [],
-        "foreignKeys": [
-          {
-            "table": "food",
-            "onDelete": "CASCADE",
-            "onUpdate": "CASCADE",
-            "columns": [
-              "food_id"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
-          }
-        ]
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f2bcd16a5580f302cc6c5c92ebfbbd07')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5faa2fe0401c1f9464b369782f44356c')"
     ]
   }
 }
