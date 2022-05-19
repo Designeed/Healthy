@@ -8,7 +8,7 @@ import com.example.healthy.data.room.journal.JournalDao
 import com.example.healthy.data.room.journal.entity.JournalDbEntity
 
 @Database(
-    version = 2,
+    version = 1,
     entities = [
         FoodDbEntity::class,
         JournalDbEntity::class

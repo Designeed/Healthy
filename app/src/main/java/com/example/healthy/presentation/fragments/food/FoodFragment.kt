@@ -10,12 +10,15 @@ import com.example.healthy.R
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.room.AppDataBase
 import com.example.healthy.databinding.FragmentFoodBinding
+import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.use_cases.food.DeleteFoodUseCase
 import com.example.healthy.domain.use_cases.food.EditFoodUseCase
+import com.example.healthy.domain.use_cases.shared.NotificationService
 import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.presentation.util.adapters.FoodRecyclerViewAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class FoodFragment : Fragment(){
     private lateinit var binding: FragmentFoodBinding
@@ -49,11 +52,15 @@ class FoodFragment : Fragment(){
             },
             onDelete = { title ->
                 lifecycleScope.launch(Dispatchers.IO) {
-                    DeleteFoodUseCase().execute(title, FoodRepositoryImpl(AppDataBase.getDatabase(requireContext()).getFoodsDao()))
+                    try {
+                        DeleteFoodUseCase().execute(title, FoodRepositoryImpl(AppDataBase.getDatabase(requireContext()).getFoodsDao()))
+                        NotificationService.notifyWithContext(requireContext(), title)
+                    } catch (ex: Exception) {
+                        NotificationService.notifyWithContext(requireContext(), ex.message.toString())
+                    }
                 }
             }
         )
-
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = recyclerViewAdapter
     }

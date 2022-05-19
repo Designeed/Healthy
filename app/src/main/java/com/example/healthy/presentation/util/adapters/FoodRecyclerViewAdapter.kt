@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chauthai.swipereveallayout.ViewBinderHelper
-import com.example.healthy.databinding.RecyclerViewItemBinding
+import com.example.healthy.databinding.FoodRecyclerViewItemBinding
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.use_cases.shared.NotificationService
 import java.lang.Exception
@@ -14,12 +14,11 @@ class FoodRecyclerViewAdapter(
     val onEdit: (String) -> Unit,
     val onDelete: (String) -> Unit
 ) : RecyclerView.Adapter<FoodRecyclerViewAdapter.FoodViewHolder>() {
-
-    private lateinit var binding: RecyclerViewItemBinding
+    private lateinit var binding: FoodRecyclerViewItemBinding
     private lateinit var context: Context
     private val viewBindHelper = ViewBinderHelper()
 
-    var data: List<Food> = emptyList()
+    var data = listOf<Food>()
         set(newValue) {
             field = newValue
             notifyDataSetChanged()
@@ -28,7 +27,7 @@ class FoodRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         context = parent.context
         val inflater = LayoutInflater.from(parent.context)
-        binding = RecyclerViewItemBinding.inflate(inflater, parent, false)
+        binding = FoodRecyclerViewItemBinding.inflate(inflater, parent, false)
         return FoodViewHolder(binding)
     }
 
@@ -51,17 +50,13 @@ class FoodRecyclerViewAdapter(
         }
 
         binding.btnDeleteFood.setOnClickListener {
-            try {
-                onDelete(data[position].title)
-            } catch (ex: Exception) {
-                NotificationService.notify(context, ex.message.toString())
-            }
+            onDelete(currentFood.title)
         }
     }
 
     override fun getItemCount(): Int = data.size
 
     class FoodViewHolder(
-        val binding: RecyclerViewItemBinding
+        val binding: FoodRecyclerViewItemBinding
     ) : RecyclerView.ViewHolder(binding.root)
 }

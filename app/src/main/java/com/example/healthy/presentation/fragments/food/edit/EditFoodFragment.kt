@@ -13,8 +13,6 @@ import com.example.healthy.domain.use_cases.shared.SetImageButton
 import kotlinx.coroutines.launch
 
 class EditFoodFragment: Fragment() {
-    //private val args: EditFoodFragmentArgs by navArgs()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
