@@ -22,24 +22,27 @@
         android:orientation="vertical">
 
         <RadioButton
-            style="@style/TextStyle"
+            android:id="@+id/rbLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/theme_light"
-            android:textSize="@dimen/default_text_size" />
+            android:textSize="@dimen/default_text_size"
+            style="@style/TextStyle"/>
 
         <RadioButton
-            style="@style/TextStyle"
+            android:id="@+id/rbDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/theme_dark"
-            android:textSize="@dimen/default_text_size" />
+            android:textSize="@dimen/default_text_size"
+            style="@style/TextStyle"/>
 
         <RadioButton
-            style="@style/TextStyle"
+            android:id="@+id/rbAuto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/theme_auto"
-            android:textSize="@dimen/default_text_size" />
+            android:textSize="@dimen/default_text_size"
+            style="@style/TextStyle"/>
     </RadioGroup>
 </LinearLayout>

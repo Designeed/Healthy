@@ -5,14 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.lifecycleScope
+import com.example.healthy.R
 import com.example.healthy.data.repository.SharedPrefRepositoryImpl
 import com.example.healthy.databinding.FragmentSettingsBinding
 import com.example.healthy.domain.use_cases.general.SwitchThemeUseCase
-import com.example.healthy.domain.use_cases.shared.NotificationService
 import com.example.healthy.domain.use_cases.sharedPref.GetThemeUseCase
 import com.example.healthy.domain.use_cases.sharedPref.SaveThemeUseCase
 import com.example.healthy.domain.util.Themes
+import kotlinx.coroutines.launch
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
@@ -30,19 +32,40 @@ class SettingsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bottomNavigationContainer.visibility = View.GONE
+    }
+
     private fun setRadioButtonClick() {
         binding.themeButtons.setOnCheckedChangeListener { radioGroup, i ->
-            lifecycleScope.launchWhenCreated {
-                SaveThemeUseCase().execute(Themes.from(i), repository)
-                val savedTheme = GetThemeUseCase().execute(repository)
-                SwitchThemeUseCase().execute(savedTheme)
+            when(true) {
+                binding.rbLight.isChecked -> changeTheme(Themes.Light)
+                binding.rbDark.isChecked -> changeTheme(Themes.Dark)
+                binding.rbAuto.isChecked -> changeTheme(Themes.Auto)
             }
         }
     }
 
-    private fun setDefaultValue() {
-        lifecycleScope.launchWhenCreated {
-            binding.themeButtons.check(GetThemeUseCase().execute(repository).value)
+    private fun changeTheme(theme: Themes) {
+        lifecycleScope.launch {
+            SaveThemeUseCase().execute(theme, repository)
+            SwitchThemeUseCase().execute(theme)
         }
+    }
+
+    private fun setDefaultValue() {
+        lifecycleScope.launch {
+            val currentGroup = GetThemeUseCase().execute(repository)
+            when (currentGroup) {
+                Themes.Light -> binding.themeButtons.check(binding.rbLight.id)
+                Themes.Dark -> binding.themeButtons.check(binding.rbDark.id)
+                Themes.Auto -> binding.themeButtons.check(binding.rbAuto.id)
+            }
+        }
+    }
+
+    companion object {
+        lateinit var bottomNavigationContainer: CoordinatorLayout
     }
 }

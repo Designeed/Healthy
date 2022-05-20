@@ -30,6 +30,7 @@ import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.domain.use_cases.shared.ValidateOnBlank
 import com.example.healthy.domain.use_cases.sharedPref.GetThemeUseCase
 import com.example.healthy.domain.util.Themes
+import com.example.healthy.presentation.fragments.SettingsFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigationContainer = findViewById(R.id.bottomNavigationContainer)
+        SettingsFragment.bottomNavigationContainer = bottomNavigationContainer
         dbFoodDao = FoodRepositoryImpl(AppDataBase.getDatabase(applicationContext).getFoodsDao())
         dbJournalDao = JournalRepositoryImpl(AppDataBase.getDatabase(applicationContext).getJournalDao())
         SetImageButton(findViewById(R.id.fab))
