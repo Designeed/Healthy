@@ -32,7 +32,7 @@ class FoodFragment : Fragment(){
         setHasOptionsMenu(true)
         binding = FragmentFoodBinding.inflate(layoutInflater)
 
-        SetImageButton.execute(R.drawable.ic_add_note)
+        SetImageButton.execute(R.drawable.ic_add_food)
         setUpRecyclerViewAdapter()
         initializeLifeData()
 

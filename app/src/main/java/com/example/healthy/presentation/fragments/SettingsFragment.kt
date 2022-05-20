@@ -32,11 +32,6 @@ class SettingsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        bottomNavigationContainer.visibility = View.GONE
-    }
-
     private fun setRadioButtonClick() {
         binding.themeButtons.setOnCheckedChangeListener { radioGroup, i ->
             when(true) {
@@ -63,9 +58,5 @@ class SettingsFragment : Fragment() {
                 Themes.Auto -> binding.themeButtons.check(binding.rbAuto.id)
             }
         }
-    }
-
-    companion object {
-        lateinit var bottomNavigationContainer: CoordinatorLayout
     }
 }

@@ -1,9 +1,11 @@
 package com.example.healthy.presentation.main
 
 import android.database.sqlite.SQLiteConstraintException
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -29,13 +31,9 @@ import com.example.healthy.domain.use_cases.shared.NotificationService
 import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.domain.use_cases.shared.ValidateOnBlank
 import com.example.healthy.domain.use_cases.sharedPref.GetThemeUseCase
-import com.example.healthy.domain.util.Themes
-import com.example.healthy.presentation.fragments.SettingsFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import java.text.DateFormat
-import java.util.*
 import com.example.healthy.data.room.AppDataBase as AppDataBase
 
 class MainActivity : AppCompatActivity(){
@@ -48,17 +46,19 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bottomNavigationContainer = findViewById(R.id.bottomNavigationContainer)
-        SettingsFragment.bottomNavigationContainer = bottomNavigationContainer
+
         dbFoodDao = FoodRepositoryImpl(AppDataBase.getDatabase(applicationContext).getFoodsDao())
         dbJournalDao = JournalRepositoryImpl(AppDataBase.getDatabase(applicationContext).getJournalDao())
+        bottomNavigationContainer = findViewById(R.id.bottomNavigationContainer)
+
+        setUpBottomNavigationView()
+        bottomContainerVisibility()
         SetImageButton(findViewById(R.id.fab))
         setAppTheme()
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             floatActionButtonClick()
         }
-        setUpBottomNavigationView()
     }
 
     //Method for support back button on ActionBar
@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
-    private fun setUpBottomNavigationView(){
+    private fun setUpBottomNavigationView() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.menu.getItem(1).isEnabled = false
 
@@ -195,7 +195,7 @@ class MainActivity : AppCompatActivity(){
         )
     }
 
-    private fun clearEditText(){
+    private fun clearEditText() {
         findViewById<EditText>(R.id.txtBox_foodTitle).text.clear()
         findViewById<EditText>(R.id.txtBox_protein).text.clear()
         findViewById<EditText>(R.id.txtBox_fat).text.clear()
@@ -211,6 +211,10 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+    private fun bottomContainerVisibility() {
+        if (navController.currentDestination?.id == R.id.fragment_settings)
+            bottomNavigationContainer.alpha = 0f
+    }
 
     fun btnOpenSettings(item: MenuItem) {
         navController.navigate(

@@ -75,6 +75,7 @@
             app:elevation="0dp"
             android:elevation="0dp"
             android:src="@drawable/ic_add_note"
+            app:maxImageSize="30dp"
             app:layout_anchor="@id/bottomAppBar"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
