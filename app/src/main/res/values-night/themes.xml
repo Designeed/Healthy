@@ -21,7 +21,7 @@
     </style>
 
     <style name="SplashScreen" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/dark_splash_screen</item>>
+        <item name="android:windowBackground">@drawable/splash_screen</item>>
     </style>
 
     <style name="ActionBarStyle" parent="Widget.AppCompat.ActionBar.Solid">

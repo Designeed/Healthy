@@ -56,7 +56,7 @@ class FoodFragment : Fragment(){
                         DeleteFoodUseCase().execute(title, FoodRepositoryImpl(AppDataBase.getDatabase(requireContext()).getFoodsDao()))
                         NotificationService.notifyWithContext(requireContext(), title)
                     } catch (ex: Exception) {
-                        NotificationService.notifyWithContext(requireContext(), ex.message.toString())
+
                     }
                 }
             }

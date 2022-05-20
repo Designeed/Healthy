@@ -56,7 +56,6 @@ class JournalFragment : Fragment() {
                         val journalId = GetJournalNoteIdUseCase().execute(title, date, journalDao)
                         DeleteJournalNoteUseCase().execute(journalId, journalDao)
                     } catch (ex: Exception) {
-                        NotificationService.notifyWithContext(requireContext(), ex.message.toString())
                     }
                 }
             }
