@@ -19,13 +19,17 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.healthy.data.repository.FoodRepositoryImpl
 import com.example.healthy.data.repository.JournalRepositoryImpl
+import com.example.healthy.data.repository.SharedPrefRepositoryImpl
 import com.example.healthy.domain.model.Food
 import com.example.healthy.domain.use_cases.food.AddFoodUseCase
 import com.example.healthy.domain.use_cases.food.EditFoodUseCase
+import com.example.healthy.domain.use_cases.general.SwitchThemeUseCase
 import com.example.healthy.domain.use_cases.journal.AddJournalNoteUseCase
 import com.example.healthy.domain.use_cases.shared.NotificationService
 import com.example.healthy.domain.use_cases.shared.SetImageButton
 import com.example.healthy.domain.use_cases.shared.ValidateOnBlank
+import com.example.healthy.domain.use_cases.sharedPref.GetThemeUseCase
+import com.example.healthy.domain.util.Themes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -47,6 +51,7 @@ class MainActivity : AppCompatActivity(){
         dbFoodDao = FoodRepositoryImpl(AppDataBase.getDatabase(applicationContext).getFoodsDao())
         dbJournalDao = JournalRepositoryImpl(AppDataBase.getDatabase(applicationContext).getJournalDao())
         SetImageButton(findViewById(R.id.fab))
+        setAppTheme()
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             floatActionButtonClick()
@@ -195,6 +200,15 @@ class MainActivity : AppCompatActivity(){
         findViewById<EditText>(R.id.txtBox_сarbs).text.clear()
         findViewById<EditText>(R.id.txtBox_calories).text.clear()
     }
+
+    private fun setAppTheme() {
+        val repository = SharedPrefRepositoryImpl(applicationContext)
+        lifecycleScope.launch {
+            val savedTheme = GetThemeUseCase().execute(repository)
+            SwitchThemeUseCase().execute(savedTheme)
+        }
+    }
+
 
     fun btnOpenSettings(item: MenuItem) {
         navController.navigate(
